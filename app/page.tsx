@@ -84,7 +84,7 @@ export default function Home() {
       {/* TRANSFORMAÇÃO */}
       <section className="section transform-section">
         <div className="container split reverse-mobile">
-          <img className="feature-img" src="/images/produto/cantor-transformacao.webp" alt="Cantor em transformação vocal" />
+          <img className="feature-img" src="/images/produto/%20cantor-transformacao.webp" alt="Cantor em transformação vocal" />
           <div>
             <h2>Seu lugar no ministério está <span>esperando por você.</span></h2>
             <p>O Foco em Harmonia foi criado para quem quer parar de errar e começar a contribuir de verdade com o louvor — com confiança, afinação e musicalidade.</p>
@@ -157,7 +157,7 @@ export default function Home() {
           <VideoFacade
             videoId="yb-6zZv763k"
             title="Viagem pelo curso"
-            thumbnailSrc="/images/videos/thumb-viagem-pelo-curso.webp"
+            thumbnailSrc="/images/videos/%20thumb-viagem-pelo-curso.webp"
           />
           <h2>Estude quando quiser, onde quiser — <span>acesso vitalício incluído!</span></h2>
           <h3>ACESSO VITALÍCIO</h3>
@@ -203,7 +203,7 @@ export default function Home() {
       {/* GARANTIA */}
       <section className="section guarantee dark">
         <div className="container split">
-          <img className="guarantee-img" src="/images/oferta/garantia-7-dias.webp" alt="Garantia de 7 dias" />
+          <img className="guarantee-img" src="/images/oferta/%20garantia-7-dias.webp" alt="Garantia de 7 dias" />
           <div>
             <h2>Risco zero para você — <span>7 dias de garantia incondicional!</span></h2>
             <p>Acesse o treinamento, aplique os exercícios e sinta a diferença. Se em 7 dias você não ver valor, basta pedir o reembolso — sem perguntas, sem burocracia, 100% do seu dinheiro de volta.</p>
@@ -223,7 +223,7 @@ export default function Home() {
             <p>Marcos Cruz é músico profissional e professor de canto, técnica vocal e piano com mais de 15 anos de experiência. Já ajudou centenas de alunos a desenvolver sua voz e cantar com confiança no ministério.</p>
             <p>Seu método é prático, direto e desenvolvido para a realidade de quem canta no louvor — sem rodeios, sem teoria desnecessária.</p>
           </div>
-          <img className="mentor-img" src="/images/mentor/marcos-cruz.webp" alt="Marcos Cruz" />
+          <img className="mentor-img" src="/images/mentor/%20marcos-cruz.webp" alt="Marcos Cruz" />
         </div>
       </section>
 
