@@ -27,7 +27,7 @@ export default function TestimonialCarousel() {
       <button className="carousel-btn prev" aria-label="Anterior" onClick={() => scroll(-1)}>&#8249;</button>
 
       <div className="carousel-track" id="carousel-track">
-        {testimonialItems.map((n, index) => (
+        {testimonialItems.map((n) => (
           <div className="carousel-slide" key={n}>
             <img src={`/images/depoimentos/%20depoimento-${n}.webp`} alt={`Depoimento ${n}`} />
           </div>
