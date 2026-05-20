@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
 import './globals.css'
+import KiwifyUtmPropagation from './components/KiwifyUtmPropagation'
 
 export const metadata: Metadata = {
   title: 'Foco em Harmonia — Oferta Especial',
@@ -17,6 +18,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         {children}
+
+        <KiwifyUtmPropagation />
 
         {/* Meta Pixel — Foco em Harmonia (392375800147182) */}
         <Script id="meta-pixel" strategy="afterInteractive">
