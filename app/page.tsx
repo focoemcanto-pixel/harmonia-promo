@@ -45,19 +45,32 @@ export default function Home() {
       <section className="hero-original">
         <div className="container narrow center">
           <img className="offer-banner" src="/images/hero/mega-oferta.webp" alt="Mega semana de ofertas" />
-          <p className="hero-kicker">Treinamento prático de divisão vocal para louvor</p>
           <h1>Você trava quando tenta fazer segunda voz no louvor?</h1>
           <p className="lead">
-            Aprenda um método simples para encontrar harmonias, desenvolver percepção auditiva e dividir com segurança — sem depender de alguém cantando no seu ouvido.
+            Aprenda a encontrar a segunda voz, desenvolver seu ouvido musical e dividir com mais segurança no louvor — mesmo que hoje você dependa de alguém cantando junto para conseguir.
           </p>
 
           <div className="hero-price-card" aria-label="Oferta especial do Foco em Harmonia">
-            <span className="hero-price-label">Oferta especial por tempo limitado</span>
+            <span className="hero-price-label">🎵 Acesso imediato</span>
             <div className="hero-price-row">
-              <span className="hero-price-times">12x</span>
+              <span className="hero-price-times">12x de</span>
               <strong>R$&nbsp;5,99</strong>
             </div>
-            <p>ou R$ 57,90 à vista • acesso vitalício</p>
+            <p className="hero-cash-price">ou <strong>R$ 57,90</strong> à vista</p>
+            <div className="hero-price-benefits">
+              <span>✓ 7 módulos completos</span>
+              <span>✓ Acesso vitalício</span>
+              <span>✓ Garantia de 7 dias</span>
+            </div>
+          </div>
+
+          <a className="button primary wide hero-cta" href={checkoutUrl} target="_blank" rel="noreferrer">
+            ⚡ QUERO APRENDER DIVISÃO VOCAL
+          </a>
+
+          <div className="mini-proof">
+            <strong>⭐⭐⭐⭐⭐</strong>
+            <p>Centenas de alunos já aprenderam divisão vocal com o método Foco em Harmonia.</p>
           </div>
 
           <VideoFacade
@@ -66,10 +79,6 @@ export default function Home() {
             startSeconds={7}
             thumbnailSrc="/images/videos/thumb-como-dividir-voz.webp"
           />
-
-          <a className="button primary wide" href={checkoutUrl} target="_blank" rel="noreferrer">
-            ⚡ QUERO APRENDER SEGUNDA VOZ
-          </a>
 
           <div className="trust-badges">
             <div className="trust-badge"><span>Acesso Imediato</span></div>
@@ -209,8 +218,6 @@ export default function Home() {
           <h2>Entre hoje no Foco em Harmonia e comece a destravar sua divisão vocal.</h2>
           <div className="offer-price-block">
             <p className="offer-discount-badge">🔥 OFERTA ESPECIAL — ACESSO VITALÍCIO</p>
-            <p className="old-price"><s>R$ 397,00</s></p>
-            <p className="price-drop-arrow" aria-hidden="true">▼</p>
             <div className="price-installment">
               <span className="price-times">12x</span>
               <span className="price-value">R$&nbsp;5,99</span>
