@@ -15,6 +15,73 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+        <style dangerouslySetInnerHTML={{ __html: `
+          .hero-original{
+            background:radial-gradient(circle at 50% 31%,rgba(168,85,247,.24) 0%,rgba(126,34,206,.13) 17%,transparent 34%),linear-gradient(180deg,#101124 0%,#090914 45%,#050505 100%)!important;
+          }
+          .hero-original::before{
+            background:radial-gradient(circle at 50% 25%,rgba(168,85,247,.2),transparent 25%)!important;
+            opacity:.9!important;
+          }
+          .hero-authority{
+            min-height:330px!important;
+            margin:.15rem auto -1.35rem!important;
+          }
+          .hero-photo-wrap{
+            width:min(520px,92vw)!important;
+            max-width:520px!important;
+            margin-left:auto!important;
+            margin-right:auto!important;
+          }
+          .hero-photo-wrap::before{
+            left:50%!important;
+            top:48%!important;
+            width:70%!important;
+            height:68%!important;
+            background:radial-gradient(circle,rgba(168,85,247,.78) 0%,rgba(126,34,206,.34) 34%,rgba(88,28,135,.08) 58%,transparent 72%)!important;
+            filter:blur(22px)!important;
+          }
+          .hero-marcos{
+            width:min(430px,82vw)!important;
+            margin-left:auto!important;
+            margin-right:auto!important;
+            transform:translateX(5%)!important;
+          }
+          .hero-authority + h1{
+            margin-top:-.55rem!important;
+          }
+          .hero-price-card{
+            max-width:400px!important;
+          }
+          @media (max-width:768px){
+            .hero-original{
+              background:radial-gradient(circle at 50% 29%,rgba(168,85,247,.28) 0%,rgba(126,34,206,.16) 24%,transparent 44%),linear-gradient(180deg,#101124 0%,#090914 46%,#050505 100%)!important;
+            }
+            .hero-original::before{
+              background:radial-gradient(circle at 50% 26%,rgba(168,85,247,.24),transparent 34%)!important;
+            }
+            .hero-authority{
+              min-height:315px!important;
+              margin:.15rem auto -1.45rem!important;
+            }
+            .hero-photo-wrap{
+              width:100%!important;
+              max-width:390px!important;
+            }
+            .hero-photo-wrap::before{
+              width:76%!important;
+              height:68%!important;
+              filter:blur(18px)!important;
+            }
+            .hero-marcos{
+              width:min(340px,84vw)!important;
+              transform:translateX(5%)!important;
+            }
+            .hero-authority + h1{
+              margin-top:-.45rem!important;
+            }
+          }
+        ` }} />
       </head>
       <body>
         {children}
