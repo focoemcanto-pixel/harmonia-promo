@@ -44,13 +44,9 @@ export default function Home() {
       {/* HERO */}
       <section className="hero-original">
         <div className="container narrow center">
-          <div className="hero-authority">
+          <div className="hero-authority" aria-hidden="true">
             <div className="hero-photo-wrap">
-              <img className="hero-marcos" src="/images/hero/marcos-hero.webp" alt="Marcos Cruz cantando" />
-            </div>
-            <div className="hero-authority-text">
-              <strong>Marcos Cruz</strong>
-              <span>Professor de Canto e Divisão Vocal</span>
+              <img className="hero-marcos" src="/images/hero/marcos-hero.webp" alt="" />
             </div>
           </div>
 
@@ -73,11 +69,6 @@ export default function Home() {
               <strong>R$&nbsp;5,99</strong>
             </div>
             <p className="hero-cash-price">ou <strong>R$ 57,90</strong> à vista</p>
-            <div className="hero-price-benefits">
-              <span>✓ 7 módulos completos</span>
-              <span>✓ Acesso vitalício</span>
-              <span>✓ Garantia de 7 dias</span>
-            </div>
           </div>
 
           <a className="button primary wide hero-cta" href={checkoutUrl} target="_blank" rel="noreferrer">
