@@ -20,11 +20,16 @@ p{line-height:1.7;margin-bottom:1rem;color:rgba(255,255,255,.85)}
 .lead{font-size:1.15rem;color:rgba(255,255,255,.9);margin-bottom:2rem}
 
 /* Button */
-.button{display:inline-block;padding:.9rem 2rem;border-radius:8px;font-weight:700;font-size:1rem;cursor:pointer;transition:transform .15s,box-shadow .15s;text-align:center}
-.button.primary{background:#f5c842;color:#111}
-.button.primary:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(245,200,66,.4)}
+.button{display:inline-block;padding:.9rem 2rem;border-radius:8px;font-weight:800;font-size:1rem;cursor:pointer;transition:transform .15s,box-shadow .15s,filter .15s;text-align:center}
+.button.primary{background:linear-gradient(135deg,#22c55e 0%,#16a34a 100%);color:#fff;border:none;box-shadow:0 8px 30px rgba(34,197,94,.35);animation:ctaPulse 2.5s ease-in-out infinite}
+.button.primary:hover{transform:translateY(-2px);filter:brightness(1.03);box-shadow:0 12px 40px rgba(34,197,94,.5)}
 .button.wide{width:100%;max-width:480px;display:block;margin:1.5rem auto 0}
 .button.centered{display:block;max-width:400px;margin:2rem auto 0}
+
+@keyframes ctaPulse{
+0%,100%{transform:scale(1);box-shadow:0 8px 30px rgba(34,197,94,.35)}
+50%{transform:scale(1.025);box-shadow:0 12px 42px rgba(34,197,94,.5)}
+}
 
 /* Countdown */
 .countdown{display:flex;justify-content:center;align-items:center;gap:1.5rem;padding:.85rem 1rem;background:#1a0000;border-bottom:2px solid #f5c842;position:sticky;top:0;z-index:100}
