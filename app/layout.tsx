@@ -17,11 +17,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
         <style dangerouslySetInnerHTML={{ __html: `
           .hero-original{
-            background:radial-gradient(circle at 50% 31%,rgba(168,85,247,.24) 0%,rgba(126,34,206,.13) 17%,transparent 34%),linear-gradient(180deg,#101124 0%,#090914 45%,#050505 100%)!important;
+            background:radial-gradient(circle at 50% 30%,rgba(168,85,247,.10) 0%,rgba(126,34,206,.06) 13%,transparent 26%),linear-gradient(180deg,#101124 0%,#090914 45%,#050505 100%)!important;
           }
           .hero-original::before{
-            background:radial-gradient(circle at 50% 25%,rgba(168,85,247,.2),transparent 25%)!important;
-            opacity:.9!important;
+            background:radial-gradient(circle at 50% 24%,rgba(168,85,247,.10),transparent 20%)!important;
+            opacity:.42!important;
           }
           .hero-authority{
             min-height:330px!important;
@@ -36,10 +36,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           .hero-photo-wrap::before{
             left:50%!important;
             top:48%!important;
-            width:70%!important;
-            height:68%!important;
-            background:radial-gradient(circle,rgba(168,85,247,.78) 0%,rgba(126,34,206,.34) 34%,rgba(88,28,135,.08) 58%,transparent 72%)!important;
-            filter:blur(22px)!important;
+            width:42%!important;
+            height:42%!important;
+            background:radial-gradient(circle,rgba(168,85,247,.34) 0%,rgba(126,34,206,.16) 44%,transparent 74%)!important;
+            filter:blur(14px)!important;
           }
           .hero-marcos{
             width:min(430px,82vw)!important;
@@ -55,10 +55,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }
           @media (max-width:768px){
             .hero-original{
-              background:radial-gradient(circle at 50% 29%,rgba(168,85,247,.28) 0%,rgba(126,34,206,.16) 24%,transparent 44%),linear-gradient(180deg,#101124 0%,#090914 46%,#050505 100%)!important;
+              background:radial-gradient(circle at 50% 29%,rgba(168,85,247,.12) 0%,rgba(126,34,206,.07) 18%,transparent 36%),linear-gradient(180deg,#101124 0%,#090914 46%,#050505 100%)!important;
             }
             .hero-original::before{
-              background:radial-gradient(circle at 50% 26%,rgba(168,85,247,.24),transparent 34%)!important;
+              background:radial-gradient(circle at 50% 26%,rgba(168,85,247,.12),transparent 27%)!important;
+              opacity:.38!important;
             }
             .hero-authority{
               min-height:315px!important;
@@ -69,9 +70,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               max-width:390px!important;
             }
             .hero-photo-wrap::before{
-              width:76%!important;
-              height:68%!important;
-              filter:blur(18px)!important;
+              width:48%!important;
+              height:44%!important;
+              filter:blur(12px)!important;
             }
             .hero-marcos{
               width:min(340px,84vw)!important;
