@@ -44,11 +44,27 @@ export default function Home() {
       {/* HERO */}
       <section className="hero-original">
         <div className="container narrow center">
-          <img className="offer-banner" src="/images/hero/mega-oferta.webp" alt="Mega semana de ofertas" />
+          <div className="hero-authority">
+            <div className="hero-photo-wrap">
+              <img className="hero-marcos" src="/images/hero/marcos-hero.webp" alt="Marcos Cruz cantando" />
+            </div>
+            <div className="hero-authority-text">
+              <strong>Marcos Cruz</strong>
+              <span>Professor de Canto e Divisão Vocal</span>
+            </div>
+          </div>
+
           <h1>Você trava quando tenta fazer segunda voz no louvor?</h1>
           <p className="lead">
             Aprenda a encontrar a segunda voz, desenvolver seu ouvido musical e dividir com mais segurança no louvor — mesmo que hoje você dependa de alguém cantando junto para conseguir.
           </p>
+
+          <VideoFacade
+            videoId="F1pYjGMCqAM"
+            title="Como dividir voz"
+            startSeconds={7}
+            thumbnailSrc="/images/videos/thumb-como-dividir-voz.webp"
+          />
 
           <div className="hero-price-card" aria-label="Oferta especial do Foco em Harmonia">
             <span className="hero-price-label">🎵 Acesso imediato</span>
@@ -72,13 +88,6 @@ export default function Home() {
             <strong>⭐⭐⭐⭐⭐</strong>
             <p>Centenas de alunos já aprenderam divisão vocal com o método Foco em Harmonia.</p>
           </div>
-
-          <VideoFacade
-            videoId="F1pYjGMCqAM"
-            title="Como dividir voz"
-            startSeconds={7}
-            thumbnailSrc="/images/videos/thumb-como-dividir-voz.webp"
-          />
 
           <div className="trust-badges">
             <div className="trust-badge"><span>Acesso Imediato</span></div>
