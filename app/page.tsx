@@ -5,20 +5,27 @@ import CountdownTimer from './components/CountdownTimer'
 const checkoutUrl = 'https://pay.kiwify.com.br/7FrQZOt'
 const whatsappUrl = 'https://wa.me/5571997178807'
 
+const painPoints = [
+  'Você até sabe cantar a melodia, mas se perde quando tenta abrir outra voz.',
+  'Quando alguém começa a dividir do seu lado, você volta automaticamente para a voz principal.',
+  'Você depende de alguém gravar sua parte para conseguir estudar em casa.',
+  'Na hora do louvor, bate insegurança de errar e atrapalhar o grupo.',
+]
+
 const benefits = [
-  'Afinação firme e precisa — sem travar na hora H.',
-  'Percepção auditiva afiada para identificar qualquer harmonia.',
-  'Consciência total na hora de harmonizar ao vivo.',
-  'Confiança para abrir segunda voz sem medo de errar.',
-  'Segurança para trabalhar kits vocais e adaptar ao seu tom.',
-  'Intuição vocal desenvolvida — você vai achar as vozes sozinho.',
+  'Afinação firme para sustentar sua linha vocal mesmo ouvindo outra voz.',
+  'Percepção auditiva para reconhecer caminhos de segunda voz com mais clareza.',
+  'Segurança para encaixar harmonias em músicas do louvor sem depender de alguém cantando no ouvido.',
+  'Prática real para trabalhar kits vocais, adaptar vozes ao seu tom e estudar com autonomia.',
+  'Consciência para saber quando manter a melodia e quando abrir a divisão vocal.',
+  'Independência para achar sua voz sozinho e contribuir melhor no ministério.',
 ]
 
 const faqs = [
-  ['Esse curso serve para quem está começando do zero?', 'Sim. As aulas foram organizadas para quem quer aprender divisão vocal de forma prática, mesmo sem domínio de teoria musical.'],
+  ['Esse curso é para aprender a cantar do zero?', 'Não. O foco principal do Foco em Harmonia é divisão vocal: segunda voz, percepção, encaixe harmônico e prática para louvor. Ele pode ajudar sua musicalidade, mas não substitui um curso completo de técnica vocal.'],
+  ['Serve para quem ainda trava na segunda voz?', 'Sim. O treinamento foi pensado justamente para quem canta no louvor, mas ainda depende de alguém mostrando a voz ou cantando junto para conseguir dividir.'],
+  ['Preciso saber teoria musical?', 'Não. As aulas são práticas e diretas, com explicações simples para você entender os caminhos da divisão vocal sem precisar dominar teoria pesada.'],
   ['Quanto tempo tenho para completar o curso?', 'O acesso é vitalício. Você pode estudar no seu ritmo, repetir as aulas e revisar os exercícios sempre que precisar.'],
-  ['Em quanto tempo verei resultados?', 'Isso depende da sua prática, mas muitos alunos percebem evolução nas primeiras semanas ao seguir o passo a passo.'],
-  ['Preciso de algum equipamento específico?', 'Não. Você só precisa de internet, celular ou computador e constância para praticar os exercícios.'],
   ['Posso parcelar o valor do treinamento?', 'Sim. O checkout mostra as opções de parcelamento disponíveis no momento da compra.'],
   ['Como funciona a garantia?', 'Você tem 7 dias de garantia incondicional. Se entender que o treinamento não é para você, pode solicitar o reembolso dentro desse prazo — sem perguntas.'],
 ]
@@ -38,11 +45,20 @@ export default function Home() {
       <section className="hero-original">
         <div className="container narrow center">
           <img className="offer-banner" src="/images/hero/mega-oferta.webp" alt="Mega semana de ofertas" />
-          <h1>Pare de Travar na Segunda Voz Aprenda a Dividir no Louvor com 85% OFF, Hoje!</h1>
+          <p className="hero-kicker">Treinamento prático de divisão vocal para louvor</p>
+          <h1>Você trava quando tenta fazer segunda voz no louvor?</h1>
           <p className="lead">
-            Essa é a chance que você estava esperando. O treinamento Foco em Harmonia está com o maior desconto já oferecido.
-            Método prático, resultado real — acesso vitalício por menos de R$&nbsp;6 por mês.
+            Aprenda um método simples para encontrar harmonias, desenvolver percepção auditiva e dividir com segurança — sem depender de alguém cantando no seu ouvido.
           </p>
+
+          <div className="hero-price-card" aria-label="Oferta especial do Foco em Harmonia">
+            <span className="hero-price-label">Oferta especial por tempo limitado</span>
+            <div className="hero-price-row">
+              <span className="hero-price-times">12x</span>
+              <strong>R$&nbsp;5,99</strong>
+            </div>
+            <p>ou R$ 57,90 à vista • acesso vitalício</p>
+          </div>
 
           <VideoFacade
             videoId="F1pYjGMCqAM"
@@ -52,7 +68,7 @@ export default function Home() {
           />
 
           <a className="button primary wide" href={checkoutUrl} target="_blank" rel="noreferrer">
-            ⚡ QUERO GARANTIR COM 85% OFF AGORA
+            ⚡ QUERO APRENDER SEGUNDA VOZ
           </a>
 
           <div className="trust-badges">
@@ -65,16 +81,39 @@ export default function Home() {
         </div>
       </section>
 
+      {/* DOR */}
+      <section className="section pain-section dark">
+        <div className="container narrow center">
+          <h2>Se você canta no ministério, talvez isso já tenha acontecido com você:</h2>
+          <div className="pain-grid">
+            {painPoints.map((item) => (
+              <div className="pain-card" key={item}>⚠️ <p>{item}</p></div>
+            ))}
+          </div>
+          <p className="pain-close">
+            O problema não é falta de dom. Na maioria das vezes, falta um caminho prático para treinar o ouvido e entender onde sua voz deve entrar.
+          </p>
+        </div>
+      </section>
+
+      {/* DEPOIMENTOS */}
+      <section className="section testimonials early-testimonials">
+        <div className="container">
+          <h2>Veja os <span>resultados reais de quem já destravou</span> a divisão vocal com o Marcos Cruz</h2>
+          <TestimonialCarousel />
+        </div>
+      </section>
+
       {/* PARA QUEM É */}
       <section className="section dark split-section">
         <div className="container split">
           <div>
-            <h2>Você ainda está <span>travando na segunda voz?</span> Isso vai mudar.</h2>
+            <h2>O Foco em Harmonia é para quem quer <span>dividir vozes com segurança</span> no louvor.</h2>
             <ul className="check-list">
-              <li><strong>Ministros de louvor:</strong> que querem dividir com firmeza e parar de depender de quem canta no ouvido.</li>
-              <li><strong>Quem tem pouco tempo:</strong> aulas diretas e objetivas — sem enrolação, sem teoria pesada.</li>
-              <li><strong>Quem quer resultado rápido:</strong> o método é progressivo, você sente a evolução semana a semana.</li>
-              <li><strong>Quem quer independência vocal:</strong> sair do coro para se tornar referência no ministério.</li>
+              <li><strong>Ministros de louvor:</strong> que querem parar de depender de alguém ensinando cada voz.</li>
+              <li><strong>Backings e coralistas:</strong> que precisam sustentar sua linha vocal sem se perder na melodia principal.</li>
+              <li><strong>Quem usa kits vocais:</strong> e quer entender melhor como adaptar a voz ao seu tom.</li>
+              <li><strong>Quem trava na hora H:</strong> e quer cantar a divisão com mais firmeza, ouvido e confiança.</li>
             </ul>
           </div>
           <img className="product-img" src="/images/produto/notebook-curso.webp" alt="Plataforma do curso" />
@@ -86,16 +125,16 @@ export default function Home() {
         <div className="container split reverse-mobile">
           <img className="feature-img" src="/images/produto/%20cantor-transformacao.webp" alt="Cantor em transformação vocal" />
           <div>
-            <h2>Seu lugar no ministério está <span>esperando por você.</span></h2>
-            <p>O Foco em Harmonia foi criado para quem quer parar de errar e começar a contribuir de verdade com o louvor — com confiança, afinação e musicalidade.</p>
-            <p><strong>Passo 1:</strong> firmar sua afinação de vez.</p>
-            <p><strong>Passo 2:</strong> construir a segunda voz com precisão.</p>
-            <p><strong>Passo 3:</strong> desenvolver intuição vocal — e nunca mais depender de ninguém.</p>
+            <h2>Você não precisa mais ficar perdido quando alguém diz: <span>“faz a segunda voz”.</span></h2>
+            <p>O Foco em Harmonia foi criado para a realidade de quem canta no louvor e precisa entender, praticar e aplicar divisão vocal em músicas reais.</p>
+            <p><strong>Passo 1:</strong> firmar sua afinação enquanto ouve outra linha vocal.</p>
+            <p><strong>Passo 2:</strong> entender caminhos simples para construir segunda voz.</p>
+            <p><strong>Passo 3:</strong> praticar até conseguir achar sua voz com mais autonomia.</p>
             <div className="outline-card">
-              Exercícios pensados para situações reais do louvor. Você vai reconhecer caminhos harmônicos e aplicar as vozes com segurança — mesmo sob pressão.
+              O foco aqui não é formar um cantor técnico do zero. É te ajudar a desenvolver percepção, encaixe e segurança para dividir vozes no louvor com mais consciência.
             </div>
             <a className="button primary wide" href={checkoutUrl} target="_blank" rel="noreferrer">
-              🔥 QUERO TUDO ISSO COM 85% OFF
+              🔥 QUERO PARAR DE TRAVAR NO LOUVOR
             </a>
           </div>
         </div>
@@ -104,49 +143,41 @@ export default function Home() {
       {/* PASSOS */}
       <section className="section steps-section light">
         <div className="container">
-          <h2 className="black-title">3 passos que vão transformar sua voz no louvor — de uma vez por todas</h2>
+          <h2 className="black-title">3 passos para destravar sua divisão vocal no louvor</h2>
           <div className="steps-grid">
             <article className="step-card">
               <img src="/images/passos/passo-1-afinacao.webp" alt="Passo 1" />
               <span>PASSO 01</span>
               <h3>Firmar a afinação</h3>
-              <p>Desenvolva estabilidade vocal para manter sua voz firme mesmo ouvindo outra linha melódica ao mesmo tempo.</p>
+              <p>Treine estabilidade para manter sua voz firme mesmo ouvindo a melodia principal ou outra linha vocal ao mesmo tempo.</p>
             </article>
             <article className="step-card">
               <img src="/images/passos/passo-2-segunda-voz.webp" alt="Passo 2" />
               <span>PASSO 02</span>
-              <h3>Aprender a segunda voz</h3>
-              <p>Construa a voz complementar com precisão e encaixe musical — sem depender de ouvir de outra pessoa.</p>
+              <h3>Encontrar a segunda voz</h3>
+              <p>Aprenda caminhos práticos para sair da melodia principal e encaixar uma voz complementar com mais segurança.</p>
             </article>
             <article className="step-card">
               <img src="/images/passos/passo-3-intuicao.webp" alt="Passo 3" />
               <span>PASSO 03</span>
-              <h3>Desenvolver a intuição</h3>
-              <p>Com prática guiada, você percebe caminhos naturais para harmonizar e se torna referência no ministério.</p>
+              <h3>Aplicar no louvor</h3>
+              <p>Com prática guiada, você começa a reconhecer possibilidades de harmonia e aplicar a divisão em situações reais.</p>
             </article>
           </div>
-        </div>
-      </section>
-
-      {/* DEPOIMENTOS */}
-      <section className="section testimonials">
-        <div className="container">
-          <h2>Veja os <span>resultados reais de quem já estudou</span> com o Marcos Cruz</h2>
-          <TestimonialCarousel />
         </div>
       </section>
 
       {/* RECAP */}
       <section className="section recap">
         <div className="container">
-          <h2><span>Recapitulando...</span> ao sair desse treinamento você vai:</h2>
+          <h2><span>Ao entrar no treinamento,</span> você vai desenvolver:</h2>
           <div className="benefit-grid">
             {benefits.map((item) => (
               <div className="benefit" key={item}>✅ <p>{item}</p></div>
             ))}
           </div>
           <a className="button primary centered" href={checkoutUrl} target="_blank" rel="noreferrer">
-            🎯 QUERO GARANTIR COM 85% OFF
+            🎯 QUERO TER ESSE RESULTADO TAMBÉM
           </a>
         </div>
       </section>
@@ -175,8 +206,9 @@ export default function Home() {
           <div className="logo-offer">
             <img src="/images/oferta/logo-foco-em-harmonia.webp" alt="Foco em Harmonia" />
           </div>
+          <h2>Entre hoje no Foco em Harmonia e comece a destravar sua divisão vocal.</h2>
           <div className="offer-price-block">
-            <p className="offer-discount-badge">🔥 85% OFF — OFERTA LIMITADA</p>
+            <p className="offer-discount-badge">🔥 OFERTA ESPECIAL — ACESSO VITALÍCIO</p>
             <p className="old-price"><s>R$ 397,00</s></p>
             <p className="price-drop-arrow" aria-hidden="true">▼</p>
             <div className="price-installment">
@@ -184,18 +216,18 @@ export default function Home() {
               <span className="price-value">R$&nbsp;5,99</span>
             </div>
             <p className="cash-price">ou <strong>R$ 57,90</strong> à vista</p>
-            <p className="offer-savings">🤑 Você economiza R$ 339,10 agora!</p>
+            <p className="offer-savings">Acesso imediato, garantia de 7 dias e pagamento seguro.</p>
           </div>
           <ul className="offer-list">
             <li>✓ 7 módulos de aulas completas</li>
             <li>✓ Comunidade exclusiva para alunos</li>
             <li>✓ Módulo bônus: como achar seu tom</li>
             <li>✓ Teste de extensão e classificação vocal</li>
-            <li>✓ Atividades práticas para o dia a dia</li>
+            <li>✓ Atividades práticas para treinar divisão vocal</li>
             <li>✓ Acesso vitalício — pague uma vez, use para sempre</li>
           </ul>
           <a className="button primary wide" href={checkoutUrl} target="_blank" rel="noreferrer">
-            🚀 QUERO GARANTIR MINHA VAGA AGORA
+            🚀 QUERO ENTRAR AGORA
           </a>
         </div>
       </section>
@@ -206,10 +238,10 @@ export default function Home() {
           <img className="guarantee-img" src="/images/oferta/%20garantia-7-dias.webp" alt="Garantia de 7 dias" />
           <div>
             <h2>Risco zero para você — <span>7 dias de garantia incondicional!</span></h2>
-            <p>Acesse o treinamento, aplique os exercícios e sinta a diferença. Se em 7 dias você não ver valor, basta pedir o reembolso — sem perguntas, sem burocracia, 100% do seu dinheiro de volta.</p>
-            <p><strong>Você não tem nada a perder. Só a segunda voz a ganhar.</strong></p>
+            <p>Acesse o treinamento, veja as aulas e pratique os exercícios. Se entender que o Foco em Harmonia não é para você, basta pedir o reembolso dentro do prazo.</p>
+            <p><strong>Você não tem nada a perder. Só a segunda voz a destravar.</strong></p>
             <a className="button primary wide" href={checkoutUrl} target="_blank" rel="noreferrer">
-              ✅ GARANTIR COM 85% OFF — SEM RISCO
+              ✅ GARANTIR MINHA VAGA SEM RISCO
             </a>
           </div>
         </div>
@@ -220,8 +252,8 @@ export default function Home() {
         <div className="container split">
           <div>
             <h2>Quem vai te guiar nessa transformação: <span>Marcos Cruz</span></h2>
-            <p>Marcos Cruz é músico profissional e professor de canto, técnica vocal e piano com mais de 15 anos de experiência. Já ajudou centenas de alunos a desenvolver sua voz e cantar com confiança no louvor.</p>
-            <p>Seu método é prático, direto e desenvolvido para a realidade de quem canta no louvor — sem rodeios, sem teoria desnecessária.</p>
+            <p>Marcos Cruz é músico profissional e professor de canto, técnica vocal e piano com mais de 15 anos de experiência. Já ajudou centenas de alunos a desenvolver percepção, afinação e mais segurança para cantar no louvor.</p>
+            <p>Seu método é prático, direto e desenvolvido para a realidade de quem canta em ministério — com foco em divisão vocal, segunda voz e aplicação real no louvor.</p>
           </div>
           <img className="mentor-img" src="/images/mentor/%20marcos-cruz.webp" alt="Marcos Cruz" />
         </div>
@@ -245,10 +277,10 @@ export default function Home() {
       {/* CTA FINAL */}
       <section className="section dark center">
         <div className="container narrow">
-          <h2>Não deixe essa oportunidade passar. <span>85% OFF por tempo limitado.</span></h2>
-          <p>Quando o timer zerar, o preço volta ao normal. Garanta agora com risco zero.</p>
+          <h2>Chega de ficar perdido quando chega a hora da divisão vocal.</h2>
+          <p>Entre no Foco em Harmonia hoje por 12x de R$ 5,99 e comece a treinar com acesso vitalício.</p>
           <a className="button primary wide" href={checkoutUrl} target="_blank" rel="noreferrer">
-            🔥 QUERO MINHA VAGA COM 85% OFF AGORA
+            🔥 QUERO MINHA VAGA AGORA
           </a>
         </div>
       </section>
