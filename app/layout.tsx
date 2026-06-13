@@ -14,6 +14,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://pay.kiwify.com.br" />
+        <link rel="preconnect" href="https://pay.kiwify.com.br" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://kiwify.com.br" />
+        <link rel="preconnect" href="https://kiwify.com.br" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&family=Roboto:wght@400;500;600;700;800;900&family=Roboto+Slab:wght@400&display=swap" rel="stylesheet" />
         <style dangerouslySetInnerHTML={{ __html: `
           .hero-original{
@@ -189,12 +193,29 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 return url.toString();
               }
 
+              function warmupCheckout(){
+                ['https://pay.kiwify.com.br','https://kiwify.com.br'].forEach(function(href){
+                  if (document.querySelector('link[data-checkout-warmup="' + href + '"]')) return;
+                  var link = document.createElement('link');
+                  link.rel = 'preconnect';
+                  link.href = href;
+                  link.crossOrigin = 'anonymous';
+                  link.setAttribute('data-checkout-warmup', href);
+                  document.head.appendChild(link);
+                });
+              }
+
               function updateCheckoutLinks(){
                 var finalCheckoutUrl = buildCheckoutUrl();
                 document.querySelectorAll('a[href*="pay.kiwify.com.br"]').forEach(function(link){
                   link.setAttribute('href', finalCheckoutUrl);
+                  link.addEventListener('pointerenter', warmupCheckout, { passive: true });
+                  link.addEventListener('touchstart', warmupCheckout, { passive: true });
+                  link.addEventListener('mousedown', warmupCheckout, { passive: true });
+                  link.addEventListener('focus', warmupCheckout, { passive: true });
                 });
               }
+              warmupCheckout();
               updateCheckoutLinks();
               new MutationObserver(updateCheckoutLinks).observe(document.body, { childList: true, subtree: true });
             })();
