@@ -14,7 +14,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&family=Roboto:wght@400;500;600;700;800;900&family=Roboto+Slab:wght@400&display=swap" rel="stylesheet" />
         <style dangerouslySetInnerHTML={{ __html: `
           .hero-original{
             background:radial-gradient(circle at 50% 30%,rgba(168,85,247,.10) 0%,rgba(126,34,206,.06) 13%,transparent 26%),linear-gradient(180deg,#101124 0%,#090914 45%,#050505 100%)!important;
@@ -53,6 +53,55 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           .hero-price-card{
             max-width:400px!important;
           }
+
+          /* Elementor global fonts — Página B */
+          .lp-b{
+            font-family:'Roboto', Arial, sans-serif!important;
+            font-weight:400!important;
+          }
+          .lp-b p,
+          .lp-b li,
+          .lp-b details,
+          .lp-b summary,
+          .lp-b .b-lead,
+          .lp-b .b-copy,
+          .lp-b .b-card p,
+          .lp-b .b-guarantee p,
+          .lp-b .b-mentor p,
+          .lp-b .b-mega-cash,
+          .lp-b .b-gift-note{
+            font-family:'Roboto', Arial, sans-serif!important;
+            font-weight:400!important;
+          }
+          .lp-b h1,
+          .lp-b h2,
+          .lp-b h3,
+          .lp-b .b-title,
+          .lp-b .b-btn,
+          .lp-b .b-indicator,
+          .lp-b .b-step-label,
+          .lp-b .b-card h3,
+          .lp-b .b-mega-price,
+          .lp-b .b-mega-list li,
+          .lp-b .b-old-price,
+          .lp-b .b-mega-sub{
+            font-family:'Roboto', Arial, sans-serif!important;
+            font-weight:600!important;
+          }
+          .lp-b strong,
+          .lp-b .green{
+            font-family:'Roboto', Arial, sans-serif!important;
+            font-weight:500!important;
+          }
+          .lp-b .count-box span{
+            font-family:'Roboto Slab', Georgia, serif!important;
+            font-weight:400!important;
+          }
+          .lp-b .count-box strong{
+            font-family:'Roboto', Arial, sans-serif!important;
+            font-weight:400!important;
+          }
+
           @media (max-width:768px){
             .hero-original{
               background:radial-gradient(circle at 50% 29%,rgba(168,85,247,.12) 0%,rgba(126,34,206,.07) 18%,transparent 36%),linear-gradient(180deg,#101124 0%,#090914 46%,#050505 100%)!important;
