@@ -6,9 +6,33 @@ interface Props {
   title: string
   startSeconds?: number
   thumbnailSrc?: string
+  priority?: boolean
 }
 
-export default function VideoFacade({ videoId, title, startSeconds, thumbnailSrc }: Props) {
+function preconnectYouTube() {
+  if (typeof document === 'undefined') return
+
+  const origins = [
+    'https://www.youtube.com',
+    'https://www.youtube-nocookie.com',
+    'https://i.ytimg.com',
+    'https://s.ytimg.com',
+    'https://googleads.g.doubleclick.net',
+  ]
+
+  origins.forEach((href) => {
+    if (document.querySelector(`link[data-video-preconnect="${href}"]`)) return
+
+    const link = document.createElement('link')
+    link.rel = 'preconnect'
+    link.href = href
+    link.crossOrigin = 'anonymous'
+    link.setAttribute('data-video-preconnect', href)
+    document.head.appendChild(link)
+  })
+}
+
+export default function VideoFacade({ videoId, title, startSeconds, thumbnailSrc, priority = false }: Props) {
   const [playing, setPlaying] = useState(false)
   const [iframeLoaded, setIframeLoaded] = useState(false)
   const iframeRef = useRef<HTMLIFrameElement>(null)
@@ -64,18 +88,29 @@ export default function VideoFacade({ videoId, title, startSeconds, thumbnailSrc
     await requestFullscreen(wrapper)
   }
 
+  function handlePlay() {
+    preconnectYouTube()
+    setPlaying(true)
+  }
+
   return (
-    <div ref={wrapperRef} className="video-facade">
+    <div ref={wrapperRef} className="video-facade" onMouseEnter={preconnectYouTube} onTouchStart={preconnectYouTube}>
       <div
         className="video-thumb"
-        onClick={() => setPlaying(true)}
+        onClick={handlePlay}
         style={{
           opacity: iframeLoaded ? 0 : 1,
           pointerEvents: playing ? 'none' : 'auto',
-          transition: 'opacity 0.4s ease',
+          transition: 'opacity 0.25s ease',
         }}
       >
-        <img src={thumbSrc} alt={title} />
+        <img
+          src={thumbSrc}
+          alt={title}
+          loading={priority ? 'eager' : 'lazy'}
+          decoding="async"
+          fetchPriority={priority ? 'high' : 'low'}
+        />
         {!playing && (
           <div className="video-play-btn">
             <svg viewBox="0 0 68 48" xmlns="http://www.w3.org/2000/svg">
@@ -91,8 +126,9 @@ export default function VideoFacade({ videoId, title, startSeconds, thumbnailSrc
           ref={iframeRef}
           src={embedSrc}
           title={title}
+          loading="eager"
           onLoad={() => setIframeLoaded(true)}
-          style={{ opacity: iframeLoaded ? 1 : 0, transition: 'opacity 0.4s ease' }}
+          style={{ opacity: iframeLoaded ? 1 : 0, transition: 'opacity 0.25s ease' }}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
           allowFullScreen
         />
