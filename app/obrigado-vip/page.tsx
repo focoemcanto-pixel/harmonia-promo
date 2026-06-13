@@ -1,4 +1,3 @@
-const vipCheckoutUrl = 'https://focoemcanto.com/focoemharmonia/checkout/'
 const nextUpsellUrl = '/mentoria-especial'
 
 const benefits = [
@@ -15,6 +14,30 @@ const steps = [
   ['2', 'Envie suas dúvidas e atividades', 'Compartilhe áudios, vídeos e exercícios do curso para receber orientação.'],
   ['3', 'Receba correções e novos treinos', 'Use os materiais extras para acelerar sua evolução na divisão vocal.'],
 ]
+
+function VipUpsellTrigger() {
+  return (
+    <div
+      id="kiwify-upsell-HHr4eyM"
+      data-upsell-url="https://promo.focoemcanto.com/mentoria-especial"
+      data-downsell-url=""
+      style={{ textAlign: 'center' }}
+    >
+      <button
+        id="kiwify-upsell-trigger-HHr4eyM"
+        style={{ backgroundColor: '#2ECC70', padding: '12px 16px', cursor: 'pointer', color: '#FFFFFF', fontWeight: 600, borderRadius: 4, border: '1px solid #2ECC70', fontSize: 20, width: '100%', minHeight: 66, textTransform: 'uppercase' }}
+      >
+        Sim, eu aceito essa oferta especial!
+      </button>
+      <div
+        id="kiwify-upsell-cancel-trigger-HHr4eyM"
+        style={{ marginTop: '1rem', cursor: 'pointer', fontSize: 16, textDecoration: 'underline', fontFamily: 'sans-serif', color: 'rgba(255,255,255,.68)' }}
+      >
+        Não, eu gostaria de recusar essa oferta
+      </div>
+    </div>
+  )
+}
 
 export const metadata = {
   title: 'Obrigado — Membros VIP Foco em Harmonia',
@@ -49,7 +72,7 @@ export default function ObrigadoVipPage() {
               <div className="vip-price"><small>R$</small><strong>15,90</strong></div>
               <div className="vip-price-note">depois R$ 19,90/mês</div>
               <p className="vip-recurring">Entre hoje, aproveite o primeiro mês com desconto e continue recebendo suporte, feedbacks e materiais exclusivos todos os meses.</p>
-              <a className="vip-cta" href={vipCheckoutUrl}>Sim, quero entrar no grupo VIP</a>
+              <VipUpsellTrigger />
               <p className="vip-small">Ao sair desta página, você perde esta condição especial.</p>
             </div>
           </div>
@@ -90,7 +113,7 @@ export default function ObrigadoVipPage() {
             <div className="vip-price-mini">Oferta única: R$ 15,90 no primeiro mês</div>
             <h2>Não deixe sua evolução depender só da sua força de vontade.</h2>
             <p>Entre no Membros VIP e tenha um espaço para praticar, enviar atividades, receber correções e acessar materiais de treino que reforçam tudo o que você vai aprender no Foco em Harmonia.</p>
-            <a className="vip-cta" href={vipCheckoutUrl}>Quero aproveitar o mês VIP por R$ 15,90</a>
+            <a className="vip-cta" href="#kiwify-upsell-HHr4eyM">Quero aproveitar o mês VIP por R$ 15,90</a>
             <br />
             <a className="vip-no" href={nextUpsellUrl}>Não quero suporte VIP agora</a>
           </div>
@@ -110,7 +133,7 @@ export default function ObrigadoVipPage() {
       <div className="vip-floating">
         <div className="vip-floating-inner">
           <div><strong>Oferta única:</strong> <span className="vip-muted">primeiro mês VIP por R$ 15,90</span></div>
-          <a className="vip-cta" href={vipCheckoutUrl}>Entrar no VIP agora</a>
+          <a className="vip-cta" href="#kiwify-upsell-HHr4eyM">Entrar no VIP agora</a>
         </div>
       </div>
     </main>
