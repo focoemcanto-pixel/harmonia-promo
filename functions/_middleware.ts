@@ -8,15 +8,27 @@ export const onRequest = async (context: any) => {
   const isVisibleBPath = url.pathname === '/b' || url.pathname === '/b/'
 
   if (isOfertaDomain && isVisibleBPath) {
-    return Response.redirect(`${url.origin}/`, 301)
+    return Response.redirect(`${url.origin}/`, 302)
   }
 
   if (isOfertaDomain && isRootPath) {
-    const rewriteUrl = new URL(request.url)
-    rewriteUrl.pathname = '/b/index.html'
+    const exportedPageUrl = new URL(request.url)
+    exportedPageUrl.pathname = '/b.html'
 
-    const rewrittenRequest = new Request(rewriteUrl.toString(), request)
-    return context.env.ASSETS.fetch(rewrittenRequest)
+    const firstAttempt = await context.env.ASSETS.fetch(
+      new Request(exportedPageUrl.toString(), request)
+    )
+
+    if (firstAttempt.status !== 404) {
+      return firstAttempt
+    }
+
+    const fallbackUrl = new URL(request.url)
+    fallbackUrl.pathname = '/b/index.html'
+
+    return context.env.ASSETS.fetch(
+      new Request(fallbackUrl.toString(), request)
+    )
   }
 
   return context.next()
