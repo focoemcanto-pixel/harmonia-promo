@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 const checkoutPrefixes = ['https://pay.kiwify.com.br']
 const trackingStorageKey = 'harmonia_tracking_params'
 const utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content']
+const trackingKeys = [...utmKeys, 'fbclid', 'gclid', 'ttclid', 'msclkid', 'sck']
 
 function getCurrentParams() {
   return new URLSearchParams(window.location.search)
@@ -26,6 +27,18 @@ function persistParams(params: URLSearchParams) {
   } catch {
     // Ignore storage errors in private browsers.
   }
+}
+
+function cleanVisibleUrl() {
+  const url = new URL(window.location.href)
+  const hadTracking = trackingKeys.some((key) => url.searchParams.has(key))
+
+  if (!hadTracking) return
+
+  trackingKeys.forEach((key) => url.searchParams.delete(key))
+
+  const cleanPath = `${url.pathname}${url.search}${url.hash}`
+  window.history.replaceState({}, document.title, cleanPath)
 }
 
 function getTrackingParams() {
@@ -123,6 +136,7 @@ export default function KiwifyUtmPropagation() {
     }
 
     updateTrackingTargets()
+    cleanVisibleUrl()
 
     const observer = new MutationObserver(scheduleUpdate)
     observer.observe(document.body, { childList: true, subtree: true })
