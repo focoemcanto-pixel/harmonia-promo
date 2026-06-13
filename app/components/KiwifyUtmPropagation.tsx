@@ -3,38 +3,112 @@
 import { useEffect } from 'react'
 
 const checkoutPrefixes = ['https://pay.kiwify.com.br']
+const trackingStorageKey = 'harmonia_tracking_params'
+const utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content']
 
-function buildSckParam() {
-  const currentUrl = window.top?.location?.href ?? window.location.href
-  const url = new URL(currentUrl)
+function getCurrentParams() {
+  return new URLSearchParams(window.location.search)
+}
 
-  if (!currentUrl.includes('?')) return ''
+function getStoredParams() {
+  try {
+    return new URLSearchParams(sessionStorage.getItem(trackingStorageKey) || '')
+  } catch {
+    return new URLSearchParams()
+  }
+}
 
-  const utmSource = url.searchParams.get('utm_source')
-  const utmMedium = url.searchParams.get('utm_medium')
-  const utmCampaign = url.searchParams.get('utm_campaign')
-  const utmTerm = url.searchParams.get('utm_term')
-  const utmContent = url.searchParams.get('utm_content')
+function persistParams(params: URLSearchParams) {
+  if (!params.toString()) return
 
-  return `&sck=${utmSource}|${utmMedium}|${utmCampaign}|${utmTerm}|${utmContent}`
+  try {
+    sessionStorage.setItem(trackingStorageKey, params.toString())
+  } catch {
+    // Ignore storage errors in private browsers.
+  }
+}
+
+function getTrackingParams() {
+  const currentParams = getCurrentParams()
+
+  if (currentParams.toString()) {
+    persistParams(currentParams)
+    return currentParams
+  }
+
+  return getStoredParams()
+}
+
+function buildSckParam(params: URLSearchParams) {
+  const hasUtm = utmKeys.some((key) => params.has(key))
+  if (!hasUtm) return ''
+
+  return utmKeys.map((key) => params.get(key) || '').join('|')
+}
+
+function isCheckoutUrl(url: string) {
+  return checkoutPrefixes.some((prefix) => url.includes(prefix))
+}
+
+function appendTracking(urlString: string, params: URLSearchParams, includeSck: boolean) {
+  if (!urlString || !params.toString()) return urlString
+
+  try {
+    const url = new URL(urlString, window.location.origin)
+
+    params.forEach((value, key) => {
+      if (!url.searchParams.has(key)) {
+        url.searchParams.set(key, value)
+      }
+    })
+
+    if (includeSck && !url.searchParams.has('sck')) {
+      const sck = buildSckParam(params)
+      if (sck) url.searchParams.set('sck', sck)
+    }
+
+    return url.toString()
+  } catch {
+    return urlString
+  }
 }
 
 export default function KiwifyUtmPropagation() {
   useEffect(() => {
-    const searchParams = new URLSearchParams(window.location.search)
-    const params = searchParams.toString()
+    function updateTrackingTargets() {
+      const params = getTrackingParams()
+      if (!params.toString()) return
 
-    if (!params) return
+      document.querySelectorAll<HTMLAnchorElement>('a[href]').forEach((link) => {
+        const includeSck = isCheckoutUrl(link.href)
+        const shouldUpdate = includeSck || link.href.includes('/obrigado-vip') || link.href.includes('/mentoria-especial')
 
-    document.querySelectorAll<HTMLAnchorElement>('a').forEach((link) => {
-      const isCheckoutLink = checkoutPrefixes.some((prefix) => link.href.includes(prefix))
+        if (!shouldUpdate) return
 
-      if (!isCheckoutLink) return
+        link.href = appendTracking(link.href, params, includeSck)
+      })
 
-      link.href += link.href.includes('?')
-        ? `&${params}${buildSckParam()}`
-        : `?${params}${buildSckParam()}`
-    })
+      document.querySelectorAll<HTMLElement>('[data-upsell-url]').forEach((element) => {
+        const url = element.getAttribute('data-upsell-url')
+        if (!url) return
+
+        element.setAttribute('data-upsell-url', appendTracking(url, params, false))
+      })
+
+      document.querySelectorAll<HTMLElement>('[data-downsell-url]').forEach((element) => {
+        const url = element.getAttribute('data-downsell-url')
+        if (!url) return
+
+        element.setAttribute('data-downsell-url', appendTracking(url, params, false))
+      })
+    }
+
+    updateTrackingTargets()
+
+    const observer = new MutationObserver(updateTrackingTargets)
+    observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['href', 'data-upsell-url', 'data-downsell-url'] })
+
+    return () => observer.disconnect()
   }, [])
 
   return null
