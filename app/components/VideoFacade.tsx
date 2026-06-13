@@ -17,7 +17,6 @@ function preconnectYouTube() {
     'https://www.youtube-nocookie.com',
     'https://i.ytimg.com',
     'https://s.ytimg.com',
-    'https://googleads.g.doubleclick.net',
   ]
 
   origins.forEach((href) => {
@@ -32,7 +31,7 @@ function preconnectYouTube() {
   })
 }
 
-export default function VideoFacade({ videoId, title, startSeconds, thumbnailSrc, priority = false }: Props) {
+export default function VideoFacade({ videoId, title, startSeconds, thumbnailSrc, priority = true }: Props) {
   const [playing, setPlaying] = useState(false)
   const [iframeLoaded, setIframeLoaded] = useState(false)
   const iframeRef = useRef<HTMLIFrameElement>(null)
