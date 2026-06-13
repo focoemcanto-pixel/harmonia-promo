@@ -154,6 +154,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Script id="force-current-checkout-link" strategy="afterInteractive">
           {`
             (function(){
+              var path = window.location.pathname;
+              var shouldForceHarmoniaCheckout = path === '/' || path === '/b' || path === '/b/';
+              if (!shouldForceHarmoniaCheckout) return;
+
               var checkout = 'https://pay.kiwify.com.br/7FrQZOt';
               function updateCheckoutLinks(){
                 document.querySelectorAll('a[href*="pay.kiwify.com.br"]').forEach(function(link){
