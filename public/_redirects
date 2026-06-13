@@ -1,0 +1,5 @@
+# Cloudflare Pages host-based rewrites
+# Mantém promo.focoemcanto.com na página A (/)
+# Faz oferta.focoemcanto.com abrir a Página B (/b) sem exibir /b na URL
+
+https://oferta.focoemcanto.com/ /b 200
