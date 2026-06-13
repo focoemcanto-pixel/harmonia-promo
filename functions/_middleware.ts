@@ -5,12 +5,18 @@ export const onRequest = async (context: any) => {
 
   const isOfertaDomain = host === 'oferta.focoemcanto.com'
   const isRootPath = url.pathname === '/' || url.pathname === ''
+  const isVisibleBPath = url.pathname === '/b' || url.pathname === '/b/'
+
+  if (isOfertaDomain && isVisibleBPath) {
+    return Response.redirect(`${url.origin}/`, 301)
+  }
 
   if (isOfertaDomain && isRootPath) {
     const rewriteUrl = new URL(request.url)
-    rewriteUrl.pathname = '/b/'
+    rewriteUrl.pathname = '/b/index.html'
 
-    return context.env.ASSETS.fetch(new Request(rewriteUrl.toString(), request))
+    const rewrittenRequest = new Request(rewriteUrl.toString(), request)
+    return context.env.ASSETS.fetch(rewrittenRequest)
   }
 
   return context.next()
