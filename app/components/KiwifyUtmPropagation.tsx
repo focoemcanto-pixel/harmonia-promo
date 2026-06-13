@@ -73,9 +73,19 @@ function appendTracking(urlString: string, params: URLSearchParams, includeSck: 
   }
 }
 
+function setIfChanged(element: Element, attribute: string, value: string) {
+  if (element.getAttribute(attribute) !== value) {
+    element.setAttribute(attribute, value)
+  }
+}
+
 export default function KiwifyUtmPropagation() {
   useEffect(() => {
+    let scheduled = false
+
     function updateTrackingTargets() {
+      scheduled = false
+
       const params = getTrackingParams()
       if (!params.toString()) return
 
@@ -85,28 +95,37 @@ export default function KiwifyUtmPropagation() {
 
         if (!shouldUpdate) return
 
-        link.href = appendTracking(link.href, params, includeSck)
+        const nextHref = appendTracking(link.href, params, includeSck)
+        if (link.href !== nextHref) {
+          link.href = nextHref
+        }
       })
 
       document.querySelectorAll<HTMLElement>('[data-upsell-url]').forEach((element) => {
         const url = element.getAttribute('data-upsell-url')
         if (!url) return
 
-        element.setAttribute('data-upsell-url', appendTracking(url, params, false))
+        setIfChanged(element, 'data-upsell-url', appendTracking(url, params, false))
       })
 
       document.querySelectorAll<HTMLElement>('[data-downsell-url]').forEach((element) => {
         const url = element.getAttribute('data-downsell-url')
         if (!url) return
 
-        element.setAttribute('data-downsell-url', appendTracking(url, params, false))
+        setIfChanged(element, 'data-downsell-url', appendTracking(url, params, false))
       })
+    }
+
+    function scheduleUpdate() {
+      if (scheduled) return
+      scheduled = true
+      window.requestAnimationFrame(updateTrackingTargets)
     }
 
     updateTrackingTargets()
 
-    const observer = new MutationObserver(updateTrackingTargets)
-    observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['href', 'data-upsell-url', 'data-downsell-url'] })
+    const observer = new MutationObserver(scheduleUpdate)
+    observer.observe(document.body, { childList: true, subtree: true })
 
     return () => observer.disconnect()
   }, [])
