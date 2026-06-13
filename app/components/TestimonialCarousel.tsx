@@ -17,8 +17,24 @@ const testimonialItems: TestimonialItem[] = [
   { type: 'image', id: 'depoimento-7', n: 7 },
 ]
 
+function preconnectYouTube() {
+  if (typeof document === 'undefined') return
+
+  ;['https://www.youtube.com', 'https://i.ytimg.com', 'https://s.ytimg.com'].forEach((href) => {
+    if (document.querySelector(`link[data-testimonial-video-preconnect="${href}"]`)) return
+
+    const link = document.createElement('link')
+    link.rel = 'preconnect'
+    link.href = href
+    link.crossOrigin = 'anonymous'
+    link.setAttribute('data-testimonial-video-preconnect', href)
+    document.head.appendChild(link)
+  })
+}
+
 export default function TestimonialCarousel() {
   const [activeIndex, setActiveIndex] = useState(0)
+  const [playingVideoId, setPlayingVideoId] = useState<string | null>(null)
 
   const scrollToIndex = (index: number) => {
     const el = document.getElementById('carousel-track') as HTMLElement | null
@@ -43,10 +59,17 @@ export default function TestimonialCarousel() {
         {testimonialItems.map((item) => (
           <div className="carousel-slide" key={item.id}>
             {item.type === 'image' ? (
-              <img src={`/images/depoimentos/%20depoimento-${item.n}.webp`} alt={`Depoimento ${item.n}`} />
+              <img
+                src={`/images/depoimentos/%20depoimento-${item.n}.webp`}
+                alt={`Depoimento ${item.n}`}
+                loading="lazy"
+                decoding="async"
+              />
             ) : (
               <div
                 aria-label={item.title}
+                onMouseEnter={preconnectYouTube}
+                onTouchStart={preconnectYouTube}
                 style={{
                   position: 'relative',
                   width: '100%',
@@ -57,19 +80,69 @@ export default function TestimonialCarousel() {
                   boxShadow: '0 8px 28px rgba(0,0,0,.35)',
                 }}
               >
-                <iframe
-                  src={`https://www.youtube.com/embed/${item.videoId}?rel=0&modestbranding=1&playsinline=1`}
-                  title={item.title}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
-                  allowFullScreen
-                  style={{
-                    position: 'absolute',
-                    inset: 0,
-                    width: '100%',
-                    height: '100%',
-                    border: 0,
-                  }}
-                />
+                {playingVideoId === item.videoId ? (
+                  <iframe
+                    src={`https://www.youtube.com/embed/${item.videoId}?autoplay=1&rel=0&modestbranding=1&playsinline=1`}
+                    title={item.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
+                    allowFullScreen
+                    style={{
+                      position: 'absolute',
+                      inset: 0,
+                      width: '100%',
+                      height: '100%',
+                      border: 0,
+                    }}
+                  />
+                ) : (
+                  <button
+                    type="button"
+                    aria-label="Reproduzir depoimento em vídeo"
+                    onClick={() => {
+                      preconnectYouTube()
+                      setPlayingVideoId(item.videoId)
+                    }}
+                    style={{
+                      position: 'absolute',
+                      inset: 0,
+                      width: '100%',
+                      height: '100%',
+                      border: 0,
+                      cursor: 'pointer',
+                      padding: 0,
+                      background: '#000',
+                    }}
+                  >
+                    <img
+                      src={`https://img.youtube.com/vi/${item.videoId}/hqdefault.jpg`}
+                      alt={item.title}
+                      loading="lazy"
+                      decoding="async"
+                      style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.84 }}
+                    />
+                    <span
+                      aria-hidden="true"
+                      style={{
+                        position: 'absolute',
+                        left: '50%',
+                        top: '50%',
+                        transform: 'translate(-50%, -50%)',
+                        width: 66,
+                        height: 66,
+                        borderRadius: '50%',
+                        background: 'rgba(255,255,255,.94)',
+                        color: '#111',
+                        display: 'grid',
+                        placeItems: 'center',
+                        fontSize: 28,
+                        paddingLeft: 4,
+                        boxShadow: '0 8px 28px rgba(0,0,0,.35)',
+                      }}
+                    >
+                      ▶
+                    </span>
+                  </button>
+                )}
               </div>
             )}
           </div>
