@@ -56,7 +56,7 @@ export default function Home() {
         <div className="container narrow center">
           <div className="hero-authority" aria-hidden="true">
             <div className="hero-photo-wrap">
-              <img className="hero-marcos" src="/images/hero/marcos-hero.webp" alt="" />
+              <img className="hero-marcos" src="/images/hero/marcos-hero.webp" alt="" loading="eager" decoding="async" fetchPriority="high" />
             </div>
           </div>
 
@@ -70,6 +70,7 @@ export default function Home() {
             title="Como dividir voz"
             startSeconds={7}
             thumbnailSrc="/images/videos/thumb-como-dividir-voz.webp"
+            priority
           />
 
           <div className="hero-price-card" aria-label="Oferta especial do Foco em Harmonia">
@@ -135,14 +136,14 @@ export default function Home() {
               <li><strong>Quem trava na hora H:</strong> e quer cantar a divisão com mais firmeza, ouvido e confiança.</li>
             </ul>
           </div>
-          <img className="product-img" src="/images/produto/notebook-curso.webp" alt="Plataforma do curso" />
+          <img className="product-img" src="/images/produto/notebook-curso.webp" alt="Plataforma do curso" loading="lazy" decoding="async" />
         </div>
       </section>
 
       {/* TRANSFORMAÇÃO */}
       <section className="section transform-section">
         <div className="container split reverse-mobile">
-          <img className="feature-img" src="/images/produto/%20cantor-transformacao.webp" alt="Cantor em transformação vocal" />
+          <img className="feature-img" src="/images/produto/%20cantor-transformacao.webp" alt="Cantor em transformação vocal" loading="lazy" decoding="async" />
           <div>
             <h2>Você não precisa mais ficar perdido quando alguém diz: <span>“faz a segunda voz”.</span></h2>
             <p>O Foco em Harmonia foi criado para a realidade de quem canta no louvor e precisa entender, praticar e aplicar divisão vocal em músicas reais.</p>
@@ -165,19 +166,19 @@ export default function Home() {
           <h2 className="black-title">3 passos para destravar sua divisão vocal no louvor</h2>
           <div className="steps-grid">
             <article className="step-card">
-              <img src="/images/passos/passo-1-afinacao.webp" alt="Passo 1" />
+              <img src="/images/passos/passo-1-afinacao.webp" alt="Passo 1" loading="lazy" decoding="async" />
               <span>PASSO 01</span>
               <h3>Firmar a afinação</h3>
               <p>Treine estabilidade para manter sua voz firme mesmo ouvindo a melodia principal ou outra linha vocal ao mesmo tempo.</p>
             </article>
             <article className="step-card">
-              <img src="/images/passos/passo-2-segunda-voz.webp" alt="Passo 2" />
+              <img src="/images/passos/passo-2-segunda-voz.webp" alt="Passo 2" loading="lazy" decoding="async" />
               <span>PASSO 02</span>
               <h3>Encontrar a segunda voz</h3>
               <p>Aprenda caminhos práticos para sair da melodia principal e encaixar uma voz complementar com mais segurança.</p>
             </article>
             <article className="step-card">
-              <img src="/images/passos/passo-3-intuicao.webp" alt="Passo 3" />
+              <img src="/images/passos/passo-3-intuicao.webp" alt="Passo 3" loading="lazy" decoding="async" />
               <span>PASSO 03</span>
               <h3>Aplicar no louvor</h3>
               <p>Com prática guiada, você começa a reconhecer possibilidades de harmonia e aplicar a divisão em situações reais.</p>
@@ -223,7 +224,7 @@ export default function Home() {
       <section className="section offer-section">
         <div className="container narrow center">
           <div className="logo-offer">
-            <img src="/images/oferta/logo-foco-em-harmonia.webp" alt="Foco em Harmonia" />
+            <img src="/images/oferta/logo-foco-em-harmonia.webp" alt="Foco em Harmonia" loading="lazy" decoding="async" />
           </div>
           <h2>Entre hoje no Foco em Harmonia e comece a destravar sua divisão vocal.</h2>
           <div className="offer-price-block">
@@ -252,7 +253,7 @@ export default function Home() {
       {/* GARANTIA */}
       <section className="section guarantee dark">
         <div className="container split">
-          <img className="guarantee-img" src="/images/oferta/%20garantia-7-dias.webp" alt="Garantia de 7 dias" />
+          <img className="guarantee-img" src="/images/oferta/%20garantia-7-dias.webp" alt="Garantia de 7 dias" loading="lazy" decoding="async" />
           <div>
             <h2>Risco zero para você — <span>7 dias de garantia incondicional!</span></h2>
             <p>Acesse o treinamento, veja as aulas e pratique os exercícios. Se entender que o Foco em Harmonia não é para você, basta pedir o reembolso dentro do prazo.</p>
@@ -272,7 +273,7 @@ export default function Home() {
             <p>Marcos Cruz é músico profissional e professor de canto, técnica vocal e piano com mais de 15 anos de experiência. Já ajudou centenas de alunos a desenvolver percepção, afinação e mais segurança para cantar no louvor.</p>
             <p>Seu método é prático, direto e desenvolvido para a realidade de quem canta em ministério — com foco em divisão vocal, segunda voz e aplicação real no louvor.</p>
           </div>
-          <img className="mentor-img" src="/images/mentor/%20marcos-cruz.webp" alt="Marcos Cruz" />
+          <img className="mentor-img" src="/images/mentor/%20marcos-cruz.webp" alt="Marcos Cruz" loading="lazy" decoding="async" />
         </div>
       </section>
 
