@@ -159,9 +159,40 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               if (!shouldForceHarmoniaCheckout) return;
 
               var checkout = 'https://pay.kiwify.com.br/7FrQZOt';
+              var utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+
+              function getTrackingParams(){
+                var params = new URLSearchParams(window.location.search);
+
+                if (params.toString()) {
+                  try { sessionStorage.setItem('harmonia_tracking_params', params.toString()); } catch(e) {}
+                  return params;
+                }
+
+                try { return new URLSearchParams(sessionStorage.getItem('harmonia_tracking_params') || ''); } catch(e) {}
+                return new URLSearchParams();
+              }
+
+              function buildCheckoutUrl(){
+                var params = getTrackingParams();
+                var url = new URL(checkout);
+
+                params.forEach(function(value, key){
+                  if (!url.searchParams.has(key)) url.searchParams.set(key, value);
+                });
+
+                var hasUtm = utmKeys.some(function(key){ return params.has(key); });
+                if (hasUtm && !url.searchParams.has('sck')) {
+                  url.searchParams.set('sck', utmKeys.map(function(key){ return params.get(key) || ''; }).join('|'));
+                }
+
+                return url.toString();
+              }
+
               function updateCheckoutLinks(){
+                var finalCheckoutUrl = buildCheckoutUrl();
                 document.querySelectorAll('a[href*="pay.kiwify.com.br"]').forEach(function(link){
-                  link.setAttribute('href', checkout);
+                  link.setAttribute('href', finalCheckoutUrl);
                 });
               }
               updateCheckoutLinks();
