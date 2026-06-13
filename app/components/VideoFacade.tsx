@@ -17,26 +17,51 @@ export default function VideoFacade({ videoId, title, startSeconds, thumbnailSrc
 
   const params = new URLSearchParams({
     autoplay: '1',
-    playsinline: '1',
-    controls: '0',
+    playsinline: '0',
+    controls: '1',
     modestbranding: '1',
     rel: '0',
     iv_load_policy: '3',
-    fs: '0',
+    fs: '1',
     ...(startSeconds ? { start: String(startSeconds) } : {}),
   })
   const embedSrc = `https://www.youtube.com/embed/${videoId}?${params}`
 
-  function handleFullscreen() {
-    const el = wrapperRef.current
-    if (!el) return
-    if (el.requestFullscreen) {
-      el.requestFullscreen()
-    } else if ((el as any).webkitRequestFullscreen) {
-      ;(el as any).webkitRequestFullscreen()
-    } else if (iframeRef.current && (iframeRef.current as any).webkitRequestFullscreen) {
-      ;(iframeRef.current as any).webkitRequestFullscreen()
+  async function requestFullscreen(el: HTMLElement | null) {
+    if (!el) return false
+
+    try {
+      if (el.requestFullscreen) {
+        await el.requestFullscreen()
+        return true
+      }
+      if ((el as any).webkitRequestFullscreen) {
+        ;(el as any).webkitRequestFullscreen()
+        return true
+      }
+      if ((el as any).mozRequestFullScreen) {
+        ;(el as any).mozRequestFullScreen()
+        return true
+      }
+      if ((el as any).msRequestFullscreen) {
+        ;(el as any).msRequestFullscreen()
+        return true
+      }
+    } catch {
+      return false
     }
+
+    return false
+  }
+
+  async function handleFullscreen() {
+    const iframe = iframeRef.current
+    const wrapper = wrapperRef.current
+
+    const iframeOpened = await requestFullscreen(iframe)
+    if (iframeOpened) return
+
+    await requestFullscreen(wrapper)
   }
 
   return (
@@ -68,7 +93,7 @@ export default function VideoFacade({ videoId, title, startSeconds, thumbnailSrc
           title={title}
           onLoad={() => setIframeLoaded(true)}
           style={{ opacity: iframeLoaded ? 1 : 0, transition: 'opacity 0.4s ease' }}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
           allowFullScreen
         />
       )}
