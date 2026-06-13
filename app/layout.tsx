@@ -151,6 +151,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         {children}
 
+        <Script id="force-current-checkout-link" strategy="afterInteractive">
+          {`
+            (function(){
+              var checkout = 'https://pay.kiwify.com.br/7FrQZOt';
+              function updateCheckoutLinks(){
+                document.querySelectorAll('a[href*="pay.kiwify.com.br"]').forEach(function(link){
+                  link.setAttribute('href', checkout);
+                });
+              }
+              updateCheckoutLinks();
+              new MutationObserver(updateCheckoutLinks).observe(document.body, { childList: true, subtree: true });
+            })();
+          `}
+        </Script>
+
         <KiwifyUtmPropagation />
 
         {/* Meta Pixel — Foco em Harmonia (392375800147182) */}
