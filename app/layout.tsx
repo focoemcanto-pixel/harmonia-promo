@@ -101,6 +101,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             font-family:'Roboto', Arial, sans-serif!important;
             font-weight:400!important;
           }
+          .lp-b .b-gift{
+            animation-delay:300s!important;
+          }
+          .lp-b .video-facade:fullscreen,
+          .lp-b .video-facade:-webkit-full-screen{
+            width:100vw!important;
+            height:100vh!important;
+            max-width:none!important;
+            background:#000!important;
+          }
+          .lp-b .video-facade:fullscreen iframe,
+          .lp-b .video-facade:-webkit-full-screen iframe{
+            width:100%!important;
+            height:100%!important;
+          }
 
           @media (max-width:768px){
             .hero-original{
