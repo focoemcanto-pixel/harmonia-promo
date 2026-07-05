@@ -160,7 +160,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {`
             (function(){
               var path = window.location.pathname;
-              var shouldForceHarmoniaCheckout = path === '/' || path === '/b' || path === '/b/';
+              var shouldForceHarmoniaCheckout = path === '/' || path === '/b' || path === '/b/' || path === '/v1' || path === '/v1/';
               if (!shouldForceHarmoniaCheckout) return;
 
               var checkout = 'https://pay.kiwify.com.br/7FrQZOt';
@@ -230,7 +230,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Script id="meta-pixel" strategy="afterInteractive">
           {`
             !function(f,b,e,v,n,t,s)
-            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            {if(f.fbq)return;n=fbq=function(){n.callMethod?
             n.callMethod.apply(n,arguments):n.queue.push(arguments)};
             if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
             n.queue=[];t=b.createElement(e);t.async=!0;
