@@ -15,12 +15,6 @@ export default function V1Layout({ children }: { children: React.ReactNode }) {
           .v1-page .v1-benefit{min-height:104px !important;padding:18px 12px !important;}
         }
       ` }} />
-      <script dangerouslySetInnerHTML={{ __html: `
-        document.addEventListener('DOMContentLoaded', function () {
-          var title = document.querySelector('.v1-video-card h2');
-          if (title) title.innerHTML = 'Entenda o <span>método.</span>';
-        });
-      ` }} />
     </>
   )
 }
