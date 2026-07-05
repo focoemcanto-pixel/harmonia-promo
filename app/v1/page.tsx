@@ -12,15 +12,6 @@ const quickBenefits = [
   'Mais liberdade, confiança e reconhecimento'
 ]
 
-const proofAvatars = [
-  '/images/depoimentos/%20depoimento-1.webp',
-  '/images/depoimentos/%20depoimento-2.webp',
-  '/images/depoimentos/%20depoimento-3.webp',
-  '/images/depoimentos/%20depoimento-4.webp',
-  '/images/depoimentos/%20depoimento-5.webp',
-  '/images/depoimentos/%20depoimento-6.webp'
-]
-
 const painPoints = [
   'Você depende de alguém cantar sua voz para conseguir dividir.',
   'Quando outra pessoa canta do lado, você se perde e volta para a melodia principal.',
@@ -70,9 +61,8 @@ export default function HarmoniaPromoV1() {
         .v1-container{width:min(1120px,100%);margin:0 auto;padding:0 22px;}
         .v1-section{padding:72px 0;position:relative;}
         .v1-hero{min-height:100svh;padding:16px 0 54px;background:radial-gradient(circle at 82% 8%,rgba(246,181,53,.32),transparent 32%),linear-gradient(180deg,#090909,#050505 74%);}
-        .v1-hero-shell{min-height:calc(100svh - 32px);border:1px solid rgba(246,181,53,.18);border-radius:34px;padding:26px;position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(255,255,255,.045),rgba(255,255,255,.015));box-shadow:0 30px 100px rgba(0,0,0,.42);}
-        .v1-brand{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:20px;position:relative;z-index:3;font-weight:1000;text-transform:uppercase;letter-spacing:.08em;font-size:1.05rem;}
-        .v1-brand span{color:var(--gold);font-size:1.5rem;}
+        .v1-hero-shell{min-height:calc(100svh - 32px);border:1px solid rgba(246,181,53,.18);border-radius:34px;padding:26px;position:relative;overflow:hidden;background:radial-gradient(circle at 78% 18%,rgba(246,181,53,.18),transparent 38%),linear-gradient(135deg,rgba(255,255,255,.045),rgba(255,255,255,.015));box-shadow:0 30px 100px rgba(0,0,0,.42);}
+        .v1-brand{display:flex;align-items:center;justify-content:center;margin-bottom:20px;position:relative;z-index:3;font-weight:1000;text-transform:uppercase;letter-spacing:.08em;font-size:1.05rem;text-align:center;}
         .v1-brand small{display:block;color:rgba(255,255,255,.66);font-size:.64rem;letter-spacing:.32em;margin-top:2px;text-align:center;}
         .v1-hero-grid{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(360px,.98fr);gap:28px;align-items:center;min-height:calc(100svh - 120px);}
         .v1-copy{position:relative;z-index:2;}
@@ -84,8 +74,7 @@ export default function HarmoniaPromoV1() {
         .v1-lead strong{color:var(--gold2);}
         .v1-proof-row{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin:22px 0 26px;}
         .v1-avatars{display:flex;align-items:center;}
-        .v1-avatar{width:46px;height:46px;border-radius:999px;border:2px solid rgba(246,181,53,.86);margin-right:-10px;background:#111;overflow:hidden;display:block;box-shadow:0 8px 18px rgba(0,0,0,.35);}
-        .v1-avatar img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
+        .v1-avatar{width:46px;height:46px;border-radius:999px;border:2px solid rgba(246,181,53,.86);margin-right:-10px;background:linear-gradient(135deg,#2a2a2a,#111);display:grid;place-items:center;font-size:.8rem;font-weight:1000;color:#fff;box-shadow:0 8px 18px rgba(0,0,0,.35);}
         .v1-proof-text{font-weight:900;color:#fff;line-height:1.25;}
         .v1-proof-text span{color:var(--gold);}
         .v1-cta-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:center;max-width:760px;margin-top:26px;}
@@ -94,9 +83,10 @@ export default function HarmoniaPromoV1() {
         .v1-price small{display:block;color:var(--gold);text-transform:uppercase;letter-spacing:.12em;font-weight:900;margin-bottom:7px;font-size:.72rem;}
         .v1-price strong{display:block;font-size:3.15rem;letter-spacing:-.08em;}
         .v1-price span{color:rgba(255,255,255,.78);font-weight:800;}
-        .v1-media{position:relative;min-height:640px;display:flex;align-items:flex-end;justify-content:center;}
-        .v1-media::before{content:'';position:absolute;inset:auto 0 0 0;height:72%;background:radial-gradient(circle at 50% 16%,rgba(246,181,53,.42),transparent 38%),linear-gradient(180deg,transparent,rgba(0,0,0,.88));filter:blur(4px);}
-        .v1-hero-img{position:relative;width:min(100%,620px);height:650px;object-fit:cover;object-position:center top;border-radius:28px;mask-image:linear-gradient(180deg,#000 0%,#000 74%,transparent 100%);-webkit-mask-image:linear-gradient(180deg,#000 0%,#000 74%,transparent 100%);filter:saturate(1.06) contrast(1.05);}
+        .v1-media{position:relative;min-height:640px;display:flex;align-items:flex-end;justify-content:center;isolation:isolate;}
+        .v1-media::before{content:'';position:absolute;inset:6% -12% 4% -10%;background:radial-gradient(circle at 58% 26%,rgba(246,181,53,.32),transparent 34%),radial-gradient(circle at 48% 52%,rgba(255,255,255,.08),transparent 38%);filter:blur(18px);z-index:0;}
+        .v1-media::after{content:'';position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,#050505 0%,rgba(5,5,5,.62) 9%,rgba(5,5,5,0) 32%,rgba(5,5,5,0) 68%,rgba(5,5,5,.3) 100%),linear-gradient(180deg,rgba(5,5,5,0) 0%,rgba(5,5,5,0) 58%,#050505 96%);pointer-events:none;}
+        .v1-hero-img{position:relative;z-index:1;width:min(100%,620px);height:650px;object-fit:cover;object-position:center top;border-radius:0;mix-blend-mode:lighten;filter:saturate(1.06) contrast(1.08) drop-shadow(0 22px 42px rgba(0,0,0,.58));mask-image:radial-gradient(ellipse at 55% 36%,#000 0%,#000 54%,rgba(0,0,0,.72) 68%,transparent 88%);-webkit-mask-image:radial-gradient(ellipse at 55% 36%,#000 0%,#000 54%,rgba(0,0,0,.72) 68%,transparent 88%);}
         .v1-benefit-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);border-radius:22px;background:rgba(0,0,0,.42);overflow:hidden;margin-top:26px;}
         .v1-benefit{padding:18px 14px;text-align:center;border-right:1px solid var(--line);font-weight:800;color:rgba(255,255,255,.84);line-height:1.28;font-size:.95rem;}
         .v1-benefit:last-child{border-right:0;}
@@ -128,18 +118,19 @@ export default function HarmoniaPromoV1() {
           .v1-hero{padding:8px 0 28px;min-height:auto;}
           .v1-container{padding:0 12px;}
           .v1-hero-shell{border-radius:26px;padding:18px 16px 24px;min-height:auto;}
-          .v1-brand{justify-content:flex-start;font-size:.92rem;margin-bottom:14px;}
+          .v1-brand{justify-content:flex-start;font-size:.92rem;margin-bottom:14px;text-align:left;}
           .v1-brand small{text-align:left;font-size:.56rem;}
           .v1-hero-grid{display:block;min-height:auto;position:relative;}
           .v1-copy{position:relative;z-index:2;}
-          .v1-media{position:absolute;top:18px;right:-42px;width:62%;height:315px;min-height:0;margin:0;z-index:1;align-items:flex-start;justify-content:flex-end;opacity:.96;pointer-events:none;}
-          .v1-media::before{inset:auto 0 0 0;height:88%;background:linear-gradient(180deg,transparent 0%,rgba(5,5,5,.78) 72%,#050505 100%);filter:none;}
-          .v1-hero-img{width:100%;height:100%;border-radius:0;object-position:center top;mask-image:linear-gradient(180deg,#000 0%,#000 68%,transparent 100%);-webkit-mask-image:linear-gradient(180deg,#000 0%,#000 68%,transparent 100%);}
-          .v1-kicker{font-size:.62rem;padding:8px 11px;margin-top:90px;max-width:calc(100% - 24px);letter-spacing:.08em;}
+          .v1-media{position:absolute;top:34px;right:-82px;width:68%;height:328px;min-height:0;margin:0;z-index:1;align-items:flex-start;justify-content:flex-end;opacity:.92;pointer-events:none;}
+          .v1-media::before{inset:-18px -22px 0 -34px;background:radial-gradient(circle at 55% 24%,rgba(246,181,53,.26),transparent 34%),radial-gradient(circle at 52% 42%,rgba(255,255,255,.08),transparent 36%);filter:blur(20px);}
+          .v1-media::after{background:linear-gradient(90deg,#050505 0%,rgba(5,5,5,.88) 10%,rgba(5,5,5,.3) 34%,rgba(5,5,5,0) 58%,rgba(5,5,5,.14) 100%),linear-gradient(180deg,rgba(5,5,5,0) 0%,rgba(5,5,5,0) 50%,#050505 94%);}
+          .v1-hero-img{width:100%;height:100%;object-position:center top;border-radius:0;mix-blend-mode:lighten;mask-image:radial-gradient(ellipse at 56% 34%,#000 0%,#000 48%,rgba(0,0,0,.52) 64%,transparent 86%);-webkit-mask-image:radial-gradient(ellipse at 56% 34%,#000 0%,#000 48%,rgba(0,0,0,.52) 64%,transparent 86%);}
+          .v1-kicker{font-size:.62rem;padding:8px 11px;margin-top:112px;max-width:calc(100% - 24px);letter-spacing:.08em;}
           .v1-h1{font-size:clamp(2.72rem,13.1vw,3.72rem);line-height:.9;letter-spacing:-.055em;margin:18px 0 14px;max-width:95%;}
           .v1-lead{font-size:1.03rem;line-height:1.46;margin-bottom:16px;max-width:96%;}
           .v1-proof-row{margin:18px 0 20px;gap:12px;align-items:center;}
-          .v1-avatar{width:42px;height:42px;}
+          .v1-avatar{width:42px;height:42px;font-size:.72rem;}
           .v1-proof-text{font-size:1.02rem;}
           .v1-benefit-strip{grid-template-columns:1fr 1fr;margin-top:18px;border-radius:20px;}
           .v1-benefit{border-bottom:1px solid var(--line);font-size:.86rem;padding:15px 10px;min-height:124px;display:flex;flex-direction:column;justify-content:center;}
@@ -164,7 +155,7 @@ export default function HarmoniaPromoV1() {
       <section className="v1-hero">
         <div className="v1-container">
           <div className="v1-hero-shell">
-            <div className="v1-brand"><span>〽</span><div>Foco em Harmonia<small>Treinamento completo</small></div></div>
+            <div className="v1-brand"><div>Foco em Harmonia<small>Treinamento completo</small></div></div>
             <div className="v1-hero-grid">
               <div className="v1-copy">
                 <div className="v1-kicker"><span className="v1-sound">🔥</span> Oferta especial</div>
@@ -172,9 +163,7 @@ export default function HarmoniaPromoV1() {
                 <p className="v1-lead">Descubra um método prático para <strong>encontrar sua voz</strong>, sustentar sua linha e <strong>harmonizar com segurança</strong> — mesmo que hoje você dependa de alguém cantando junto.</p>
 
                 <div className="v1-proof-row">
-                  <div className="v1-avatars" aria-hidden="true">
-                    {proofAvatars.map((src) => <span className="v1-avatar" key={src}><img src={src} alt="" loading="eager" decoding="async" /></span>)}
-                  </div>
+                  <div className="v1-avatars" aria-hidden="true"><span className="v1-avatar">MC</span><span className="v1-avatar">A+</span><span className="v1-avatar">J</span><span className="v1-avatar">L</span><span className="v1-avatar">+</span></div>
                   <div className="v1-proof-text"><span>+ de 1.200 cantores</span><br />já transformaram sua forma de cantar no louvor</div>
                 </div>
 
