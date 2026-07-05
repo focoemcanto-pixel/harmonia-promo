@@ -83,9 +83,9 @@ export default function HarmoniaPromoV1() {
         .v1-price small{display:block;color:var(--gold);text-transform:uppercase;letter-spacing:.12em;font-weight:900;margin-bottom:7px;font-size:.72rem;}
         .v1-price strong{display:block;font-size:3.15rem;letter-spacing:-.08em;}
         .v1-price span{color:rgba(255,255,255,.78);font-weight:800;}
-        .v1-media{position:absolute;right:4%;top:10%;width:38%;height:46%;z-index:1;pointer-events:none;overflow:hidden;opacity:.78;}
+        .v1-media{position:absolute;right:2%;top:8%;width:42%;height:52%;z-index:2;pointer-events:none;overflow:visible;opacity:1;}
         .v1-media::before,.v1-media::after{display:none!important;content:none!important;}
-        .v1-hero-img{position:absolute;right:-3%;top:-8%;width:112%;height:112%;object-fit:cover;object-position:center top;border:0;border-radius:0;mix-blend-mode:lighten;opacity:.86;filter:saturate(1.08) contrast(1.04) brightness(.96);mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.12) 16%,#000 46%,#000 82%,transparent 100%),linear-gradient(180deg,#000 0%,#000 62%,transparent 100%);-webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.12) 16%,#000 46%,#000 82%,transparent 100%),linear-gradient(180deg,#000 0%,#000 62%,transparent 100%);}
+        .v1-hero-img{position:absolute;right:-34%;top:-12%;width:165%;height:126%;object-fit:cover;object-position:center top;border:0;border-radius:0;mix-blend-mode:normal;opacity:1;filter:saturate(1.08) contrast(1.08) brightness(1.03) drop-shadow(0 20px 32px rgba(0,0,0,.48));mask-image:radial-gradient(ellipse at 61% 37%,#000 0%,#000 43%,rgba(0,0,0,.72) 58%,transparent 76%);-webkit-mask-image:radial-gradient(ellipse at 61% 37%,#000 0%,#000 43%,rgba(0,0,0,.72) 58%,transparent 76%);}
         .v1-benefit-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);border-radius:22px;background:rgba(0,0,0,.42);overflow:hidden;margin-top:26px;}
         .v1-benefit{padding:18px 14px;text-align:center;border-right:1px solid var(--line);font-weight:800;color:rgba(255,255,255,.84);line-height:1.28;font-size:.95rem;}
         .v1-benefit:last-child{border-right:0;}
@@ -116,12 +116,12 @@ export default function HarmoniaPromoV1() {
         @media(max-width:920px){
           .v1-hero{padding:8px 0 28px;min-height:auto;}
           .v1-container{padding:0 12px;}
-          .v1-hero-shell{border-radius:26px;padding:18px 16px 24px;min-height:auto;background:radial-gradient(circle at 87% 14%,rgba(246,181,53,.12),transparent 24%),linear-gradient(135deg,rgba(255,255,255,.045),rgba(255,255,255,.015));}
+          .v1-hero-shell{border-radius:26px;padding:18px 16px 24px;min-height:auto;background:radial-gradient(circle at 88% 14%,rgba(246,181,53,.14),transparent 24%),linear-gradient(135deg,rgba(255,255,255,.045),rgba(255,255,255,.015));}
           .v1-brand{justify-content:flex-start;font-size:.92rem;margin-bottom:14px;text-align:left;}
           .v1-brand small{text-align:left;font-size:.56rem;}
           .v1-hero-grid{display:block;min-height:auto;position:relative;}
-          .v1-media{top:88px;right:10px;width:40%;height:235px;opacity:.72;}
-          .v1-hero-img{right:-26%;top:-9%;width:154%;height:120%;object-fit:cover;object-position:center top;mix-blend-mode:lighten;opacity:.82;filter:saturate(1.06) contrast(1.02) brightness(.94);mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.08) 18%,#000 48%,#000 72%,transparent 100%),linear-gradient(180deg,#000 0%,#000 52%,transparent 100%);-webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.08) 18%,#000 48%,#000 72%,transparent 100%),linear-gradient(180deg,#000 0%,#000 52%,transparent 100%);}
+          .v1-media{top:86px;right:-7px;width:47%;height:335px;opacity:1;z-index:2;overflow:visible;}
+          .v1-hero-img{right:-47%;top:-10%;width:205%;height:128%;object-fit:cover;object-position:center top;mix-blend-mode:normal;opacity:1;filter:saturate(1.08) contrast(1.08) brightness(1.05) drop-shadow(0 18px 28px rgba(0,0,0,.46));mask-image:radial-gradient(ellipse at 60% 36%,#000 0%,#000 42%,rgba(0,0,0,.72) 58%,transparent 76%);-webkit-mask-image:radial-gradient(ellipse at 60% 36%,#000 0%,#000 42%,rgba(0,0,0,.72) 58%,transparent 76%);}
           .v1-kicker{font-size:.62rem;padding:8px 11px;margin-top:112px;max-width:calc(100% - 24px);letter-spacing:.08em;}
           .v1-h1{font-size:clamp(2.72rem,13.1vw,3.72rem);line-height:.9;letter-spacing:-.055em;margin:18px 0 14px;max-width:95%;}
           .v1-lead{font-size:1.03rem;line-height:1.46;margin-bottom:16px;max-width:96%;}
