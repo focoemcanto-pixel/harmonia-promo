@@ -160,7 +160,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {`
             (function(){
               var path = window.location.pathname;
-              var shouldForceHarmoniaCheckout = path === '/' || path === '/b' || path === '/b/' || path === '/v1' || path === '/v1/';
+              var shouldForceHarmoniaCheckout = path === '/' || path === '/b' || path === '/b/' || path === '/v1' || path === '/v1/' || path === '/v2' || path === '/v2/';
               if (!shouldForceHarmoniaCheckout) return;
 
               var checkout = 'https://pay.kiwify.com.br/7FrQZOt';
