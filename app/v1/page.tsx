@@ -187,7 +187,7 @@ export default function HarmoniaPromoV1() {
         <div className="v1-container">
           <div className="v1-video-card">
             <div>
-              <h2>Antes de comprar, entenda o <span>método.</span></h2>
+              <h2>Entenda o <span>método.</span></h2>
               <p>Assista ao vídeo e veja como o Foco em Harmonia te guia para sair da dependência e desenvolver ouvido harmônico com exercícios simples, progressivos e aplicáveis ao louvor.</p>
             </div>
             <VideoFacade videoId="F1pYjGMCqAM" title="Como dividir voz" startSeconds={7} thumbnailSrc="/images/videos/thumb-como-dividir-voz.webp" priority />
