@@ -6,10 +6,19 @@ const checkoutUrl = 'https://pay.kiwify.com.br/7FrQZOt'
 const whatsappUrl = 'https://wa.me/5571997178807'
 
 const quickBenefits = [
-  'Encontre sua segunda voz com mais clareza',
-  'Sustente sua linha sem voltar para a melodia',
-  'Desenvolva ouvido harmônico de forma guiada',
-  'Cante no louvor com mais segurança'
+  'Encontre qualquer segunda voz com facilidade',
+  'Harmonize com segurança em qualquer ministério',
+  'Crie kits vocais e adapte vozes com inteligência',
+  'Mais liberdade, confiança e reconhecimento'
+]
+
+const proofAvatars = [
+  '/images/depoimentos/%20depoimento-1.webp',
+  '/images/depoimentos/%20depoimento-2.webp',
+  '/images/depoimentos/%20depoimento-3.webp',
+  '/images/depoimentos/%20depoimento-4.webp',
+  '/images/depoimentos/%20depoimento-5.webp',
+  '/images/depoimentos/%20depoimento-6.webp'
 ]
 
 const painPoints = [
@@ -62,7 +71,11 @@ export default function HarmoniaPromoV1() {
         .v1-section{padding:72px 0;position:relative;}
         .v1-hero{min-height:100svh;padding:16px 0 54px;background:radial-gradient(circle at 82% 8%,rgba(246,181,53,.32),transparent 32%),linear-gradient(180deg,#090909,#050505 74%);}
         .v1-hero-shell{min-height:calc(100svh - 32px);border:1px solid rgba(246,181,53,.18);border-radius:34px;padding:26px;position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(255,255,255,.045),rgba(255,255,255,.015));box-shadow:0 30px 100px rgba(0,0,0,.42);}
-        .v1-hero-grid{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(360px,.98fr);gap:28px;align-items:center;min-height:calc(100svh - 86px);}
+        .v1-brand{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:20px;position:relative;z-index:3;font-weight:1000;text-transform:uppercase;letter-spacing:.08em;font-size:1.05rem;}
+        .v1-brand span{color:var(--gold);font-size:1.5rem;}
+        .v1-brand small{display:block;color:rgba(255,255,255,.66);font-size:.64rem;letter-spacing:.32em;margin-top:2px;text-align:center;}
+        .v1-hero-grid{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(360px,.98fr);gap:28px;align-items:center;min-height:calc(100svh - 120px);}
+        .v1-copy{position:relative;z-index:2;}
         .v1-kicker{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(246,181,53,.34);border-radius:999px;padding:10px 15px;background:rgba(246,181,53,.08);color:#fff;font-weight:900;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;}
         .v1-sound{color:var(--gold);font-size:1.05rem;}
         .v1-h1{font-size:clamp(3.25rem,7.2vw,6.95rem);line-height:.88;letter-spacing:-.065em;margin:24px 0 20px;font-weight:1000;text-transform:uppercase;}
@@ -71,7 +84,8 @@ export default function HarmoniaPromoV1() {
         .v1-lead strong{color:var(--gold2);}
         .v1-proof-row{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin:22px 0 26px;}
         .v1-avatars{display:flex;align-items:center;}
-        .v1-avatar{width:43px;height:43px;border-radius:999px;border:2px solid rgba(246,181,53,.8);margin-right:-10px;background:linear-gradient(135deg,#2a2a2a,#111);display:grid;place-items:center;font-size:.8rem;font-weight:900;color:#fff;box-shadow:0 8px 18px rgba(0,0,0,.35);}
+        .v1-avatar{width:46px;height:46px;border-radius:999px;border:2px solid rgba(246,181,53,.86);margin-right:-10px;background:#111;overflow:hidden;display:block;box-shadow:0 8px 18px rgba(0,0,0,.35);}
+        .v1-avatar img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
         .v1-proof-text{font-weight:900;color:#fff;line-height:1.25;}
         .v1-proof-text span{color:var(--gold);}
         .v1-cta-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:center;max-width:760px;margin-top:26px;}
@@ -111,26 +125,31 @@ export default function HarmoniaPromoV1() {
         .v1-faq .faq-list summary{cursor:pointer;font-weight:900;color:#fff;}
         .v1-faq .faq-list p{margin:12px 0 0;}
         @media(max-width:920px){
-          .v1-hero{padding:10px 0 34px;}
-          .v1-container{padding:0 14px;}
-          .v1-hero-shell{border-radius:26px;padding:20px 16px;}
-          .v1-hero-grid{grid-template-columns:1fr;gap:8px;min-height:auto;}
+          .v1-hero{padding:8px 0 28px;min-height:auto;}
+          .v1-container{padding:0 12px;}
+          .v1-hero-shell{border-radius:26px;padding:18px 16px 24px;min-height:auto;}
+          .v1-brand{justify-content:flex-start;font-size:.92rem;margin-bottom:14px;}
+          .v1-brand small{text-align:left;font-size:.56rem;}
+          .v1-hero-grid{display:block;min-height:auto;position:relative;}
           .v1-copy{position:relative;z-index:2;}
-          .v1-h1{font-size:clamp(3.05rem,16vw,5.1rem);line-height:.89;margin:20px 0 16px;}
-          .v1-lead{font-size:1.08rem;line-height:1.45;margin-bottom:12px;}
-          .v1-media{order:-1;min-height:0;margin:-6px -8px 0;align-items:flex-start;}
-          .v1-media::before{height:100%;}
-          .v1-hero-img{height:390px;width:100%;border-radius:22px;object-position:center 12%;}
-          .v1-kicker{font-size:.68rem;padding:9px 12px;margin-top:2px;}
-          .v1-proof-row{margin:18px 0 20px;gap:12px;}
-          .v1-avatar{width:36px;height:36px;font-size:.72rem;}
-          .v1-cta-row{grid-template-columns:1fr;gap:14px;margin-top:18px;}
-          .v1-price{display:flex;align-items:end;gap:10px;min-width:0;}
-          .v1-price strong{font-size:3rem;}
-          .v1-benefit-strip{grid-template-columns:1fr 1fr;margin-top:18px;}
-          .v1-benefit{border-bottom:1px solid var(--line);font-size:.88rem;padding:15px 10px;}
+          .v1-media{position:absolute;top:18px;right:-42px;width:62%;height:315px;min-height:0;margin:0;z-index:1;align-items:flex-start;justify-content:flex-end;opacity:.96;pointer-events:none;}
+          .v1-media::before{inset:auto 0 0 0;height:88%;background:linear-gradient(180deg,transparent 0%,rgba(5,5,5,.78) 72%,#050505 100%);filter:none;}
+          .v1-hero-img{width:100%;height:100%;border-radius:0;object-position:center top;mask-image:linear-gradient(180deg,#000 0%,#000 68%,transparent 100%);-webkit-mask-image:linear-gradient(180deg,#000 0%,#000 68%,transparent 100%);}
+          .v1-kicker{font-size:.62rem;padding:8px 11px;margin-top:90px;max-width:calc(100% - 24px);letter-spacing:.08em;}
+          .v1-h1{font-size:clamp(2.72rem,13.1vw,3.72rem);line-height:.9;letter-spacing:-.055em;margin:18px 0 14px;max-width:95%;}
+          .v1-lead{font-size:1.03rem;line-height:1.46;margin-bottom:16px;max-width:96%;}
+          .v1-proof-row{margin:18px 0 20px;gap:12px;align-items:center;}
+          .v1-avatar{width:42px;height:42px;}
+          .v1-proof-text{font-size:1.02rem;}
+          .v1-benefit-strip{grid-template-columns:1fr 1fr;margin-top:18px;border-radius:20px;}
+          .v1-benefit{border-bottom:1px solid var(--line);font-size:.86rem;padding:15px 10px;min-height:124px;display:flex;flex-direction:column;justify-content:center;}
           .v1-benefit:nth-child(2){border-right:0;}
           .v1-benefit:nth-child(3),.v1-benefit:nth-child(4){border-bottom:0;}
+          .v1-cta-row{grid-template-columns:1fr;gap:14px;margin-top:20px;}
+          .v1-button{padding:18px 16px;border-radius:18px;font-size:.93rem;line-height:1.2;}
+          .v1-price{display:block;min-width:0;margin-top:4px;}
+          .v1-price strong{font-size:3.35rem;}
+          .v1-trust{font-size:.91rem;align-items:flex-start;line-height:1.4;}
           .v1-video-card,.v1-offer-box{grid-template-columns:1fr;}
           .v1-pain-grid,.v1-transform-grid{grid-template-columns:1fr;}
           .v1-section{padding:50px 0;}
@@ -145,19 +164,22 @@ export default function HarmoniaPromoV1() {
       <section className="v1-hero">
         <div className="v1-container">
           <div className="v1-hero-shell">
+            <div className="v1-brand"><span>〽</span><div>Foco em Harmonia<small>Treinamento completo</small></div></div>
             <div className="v1-hero-grid">
               <div className="v1-copy">
-                <div className="v1-kicker"><span className="v1-sound">〽</span> Foco em Harmonia • oferta especial</div>
+                <div className="v1-kicker"><span className="v1-sound">🔥</span> Oferta especial</div>
                 <h1 className="v1-h1">Pare de travar quando chega a hora da <span>segunda voz</span> no louvor.</h1>
                 <p className="v1-lead">Descubra um método prático para <strong>encontrar sua voz</strong>, sustentar sua linha e <strong>harmonizar com segurança</strong> — mesmo que hoje você dependa de alguém cantando junto.</p>
 
                 <div className="v1-proof-row">
-                  <div className="v1-avatars" aria-hidden="true"><span className="v1-avatar">MC</span><span className="v1-avatar">A+</span><span className="v1-avatar">J</span><span className="v1-avatar">L</span><span className="v1-avatar">+</span></div>
+                  <div className="v1-avatars" aria-hidden="true">
+                    {proofAvatars.map((src) => <span className="v1-avatar" key={src}><img src={src} alt="" loading="eager" decoding="async" /></span>)}
+                  </div>
                   <div className="v1-proof-text"><span>+ de 1.200 cantores</span><br />já transformaram sua forma de cantar no louvor</div>
                 </div>
 
                 <div className="v1-benefit-strip">
-                  {quickBenefits.map((item, index) => <div className="v1-benefit" key={item}><i>{['◖','〽','◉','★'][index]}</i>{item}</div>)}
+                  {quickBenefits.map((item, index) => <div className="v1-benefit" key={item}><i>{['◖','〽','♫','★'][index]}</i>{item}</div>)}
                 </div>
 
                 <div className="v1-cta-row">
