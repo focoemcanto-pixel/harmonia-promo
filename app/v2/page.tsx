@@ -4,8 +4,8 @@ import VideoFacade from '../components/VideoFacade'
 
 const checkoutUrl = 'https://pay.kiwify.com.br/7FrQZOt'
 const whatsappUrl = 'https://wa.me/5571997178807'
-const heroVideoMovUrl = 'https://pub-fc66e9e933424d3492375431357d3967.r2.dev/hero-v3-cta-loop.mov'
-const heroVideoUrl = 'https://pub-fc66e9e933424d3492375431357d3967.r2.dev/hero-v3-cta-loop.webm'
+const heroVideoMovUrl = 'https://pub-fc66e9e933424d3492375431357d3967.r2.dev/hero-v3-cta-loop.mov?v=hevc-alpha-capcut-20260706'
+const heroVideoUrl = 'https://pub-fc66e9e933424d3492375431357d3967.r2.dev/hero-v3-cta-loop.webm?v=20260706'
 
 const methodSteps = [
   ['01', 'Ouça a melodia', 'Você aprende a perceber o caminho principal sem se perder no conjunto.'],
@@ -60,6 +60,7 @@ export default function HarmoniaPromoV2() {
               <div className="v2-stage" aria-hidden="false">
                 <video className="v2-video" autoPlay muted loop playsInline preload="auto">
                   <source src={heroVideoMovUrl} type='video/mp4; codecs="hvc1"' />
+                  <source src={heroVideoMovUrl} type="video/quicktime" />
                   <source src={heroVideoUrl} type="video/webm" />
                 </video>
                 <a className="v2-hotspot" href={checkoutUrl} target="_blank" rel="noreferrer" aria-label="Quero destravar minha segunda voz" />
