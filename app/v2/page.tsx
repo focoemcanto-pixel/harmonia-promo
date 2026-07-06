@@ -59,7 +59,7 @@ export default function HarmoniaPromoV2() {
 
               <div className="v2-stage" aria-hidden="false">
                 <video className="v2-video" autoPlay muted loop playsInline preload="auto">
-                  <source src={heroVideoMovUrl} type="video/quicktime" />
+                  <source src={heroVideoMovUrl} type={'video/mp4; codecs="hvc1"'} />
                   <source src={heroVideoUrl} type="video/webm" />
                 </video>
                 <a className="v2-hotspot" href={checkoutUrl} target="_blank" rel="noreferrer" aria-label="Quero destravar minha segunda voz" />
