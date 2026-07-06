@@ -1,4 +1,4 @@
-const nextUpsellUrl = '/mentoria-especial'
+const assetVersion = '?v=20260706-vip2'
 
 const unlocks = [
   'Central de exercícios diários',
@@ -16,42 +16,42 @@ const features = [
     eyebrow: 'Dashboard VIP',
     title: 'Sua escola vocal em um só lugar.',
     text: 'Acesse seus cursos, biblioteca, central de treino, comunidade e progresso real dentro da Escola Foco em Canto.',
-    image: '/images/escola/hero-dashboard.webp',
+    image: `/images/escola/hero-dashboard.webp${assetVersion}`,
     alt: 'Dashboard da Escola Foco em Canto',
   },
   {
     eyebrow: 'Comunidade VIP',
     title: 'Compartilhe sua evolução.',
     text: 'Publique práticas, acompanhe outros alunos e transforme seu estudo em uma experiência mais viva, constante e motivadora.',
-    image: '/images/escola/feature-community.webp',
+    image: `/images/escola/feature-community.webp${assetVersion}`,
     alt: 'Feed da Comunidade VIP',
   },
   {
     eyebrow: 'Central de Treinamento',
     title: 'Treine sua voz todos os dias.',
     text: 'Desafios diários e treinos por objetivo para criar rotina, consistência e evolução contínua.',
-    image: '/images/escola/feature-training-center.webp',
+    image: `/images/escola/feature-training-center.webp${assetVersion}`,
     alt: 'Central de Treinamento da Escola Foco em Canto',
   },
   {
     eyebrow: 'Exercícios guiados',
     title: 'Pratique com direção visual.',
     text: 'Acompanhe notas, referências e exercícios de forma interativa para treinar com mais clareza e precisão.',
-    image: '/images/escola/feature-guided-exercises.webp',
+    image: `/images/escola/feature-guided-exercises.webp${assetVersion}`,
     alt: 'Exercício guiado de canto',
   },
   {
     eyebrow: 'Análise vocal',
     title: 'Mapeie extensão e tessitura.',
     text: 'Use recursos visuais para entender melhor sua voz, reconhecer regiões vocais e acompanhar sua evolução técnica.',
-    image: '/images/escola/feature-vocal-analysis.webp',
+    image: `/images/escola/feature-vocal-analysis.webp${assetVersion}`,
     alt: 'Análise de extensão e tessitura vocal',
   },
   {
     eyebrow: 'Dueto Premium',
     title: 'Grave, envie e receba avaliação.',
     text: 'Treine duetos de divisão vocal, grave sua prática e envie para avaliação do professor dentro da experiência VIP.',
-    image: '/images/escola/feature-duets.webp',
+    image: `/images/escola/feature-duets.webp${assetVersion}`,
     alt: 'Gravação de duetos premium',
   },
 ]
@@ -106,7 +106,7 @@ export default function ObrigadoVipPage() {
 
           <div className="vip-device-stage" aria-hidden="true">
             <div className="vip-device-glow" />
-            <div className="vip-phone"><img src="/images/escola/hero-dashboard.webp" alt="" /></div>
+            <div className="vip-phone"><img src={`/images/escola/hero-dashboard.webp${assetVersion}`} alt="" /></div>
             <div className="vip-floating-card"><strong>VIP</strong><span>Libera central, comunidade, duetos, análise vocal e muito mais.</span></div>
           </div>
         </div>
