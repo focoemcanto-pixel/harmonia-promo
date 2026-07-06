@@ -1,141 +1,201 @@
-import KiwifyUpsellCta from '../components/KiwifyUpsellCta'
-
 const nextUpsellUrl = '/mentoria-especial'
 
-const benefits = [
-  'Suporte contínuo para tirar dúvidas enquanto você estuda o Foco em Harmonia.',
-  'Feedbacks e correções para suas atividades, áudios e vídeos enviados no grupo.',
-  'Direcionamento prático para saber exatamente o que ajustar na sua divisão vocal.',
-  'Acesso à pasta exclusiva no Google Drive com materiais extras de treino.',
-  'Atividades em áudio e vídeo para reforçar sua percepção, afinação e segunda voz.',
-  'Ambiente de acompanhamento para você não estudar sozinho depois da compra.',
+const unlocks = [
+  'Central de exercícios diários',
+  'Treinos personalizados por objetivo',
+  'Exercícios guiados com referência visual',
+  'Análise de extensão e tessitura vocal',
+  'Gravação de duetos para avaliação',
+  'Feed da Comunidade VIP',
+  'Biblioteca premium organizada na plataforma',
+  'Atualizações e novos recursos premium',
 ]
 
-const steps = [
-  ['1', 'Entre no grupo VIP', 'Você garante seu acesso com a condição especial desta página.'],
-  ['2', 'Envie suas dúvidas e atividades', 'Compartilhe áudios, vídeos e exercícios do curso para receber orientação.'],
-  ['3', 'Receba correções e novos treinos', 'Use os materiais extras para acelerar sua evolução na divisão vocal.'],
+const features = [
+  {
+    eyebrow: 'Dashboard VIP',
+    title: 'Sua escola vocal em um só lugar.',
+    text: 'Acesse seus cursos, biblioteca, central de treino, comunidade e progresso real dentro da Escola Foco em Canto.',
+    image: '/images/escola/hero-dashboard.webp',
+    alt: 'Dashboard da Escola Foco em Canto',
+  },
+  {
+    eyebrow: 'Comunidade VIP',
+    title: 'Compartilhe sua evolução.',
+    text: 'Publique práticas, acompanhe outros alunos e transforme seu estudo em uma experiência mais viva, constante e motivadora.',
+    image: '/images/escola/feature-community.webp',
+    alt: 'Feed da Comunidade VIP',
+  },
+  {
+    eyebrow: 'Central de Treinamento',
+    title: 'Treine sua voz todos os dias.',
+    text: 'Desafios diários e treinos por objetivo para criar rotina, consistência e evolução contínua.',
+    image: '/images/escola/feature-training-center.webp',
+    alt: 'Central de Treinamento da Escola Foco em Canto',
+  },
+  {
+    eyebrow: 'Exercícios guiados',
+    title: 'Pratique com direção visual.',
+    text: 'Acompanhe notas, referências e exercícios de forma interativa para treinar com mais clareza e precisão.',
+    image: '/images/escola/feature-guided-exercises.webp',
+    alt: 'Exercício guiado de canto',
+  },
+  {
+    eyebrow: 'Análise vocal',
+    title: 'Mapeie extensão e tessitura.',
+    text: 'Use recursos visuais para entender melhor sua voz, reconhecer regiões vocais e acompanhar sua evolução técnica.',
+    image: '/images/escola/feature-vocal-analysis.webp',
+    alt: 'Análise de extensão e tessitura vocal',
+  },
+  {
+    eyebrow: 'Dueto Premium',
+    title: 'Grave, envie e receba avaliação.',
+    text: 'Treine duetos de divisão vocal, grave sua prática e envie para avaliação do professor dentro da experiência VIP.',
+    image: '/images/escola/feature-duets.webp',
+    alt: 'Gravação de duetos premium',
+  },
 ]
 
-function VipUpsellTrigger() {
+const comparisons = [
+  ['Curso isolado', 'Ambiente VIP com rotina e acompanhamento'],
+  ['Materiais espalhados', 'Biblioteca premium organizada na escola'],
+  ['Estudo sem direção diária', 'Central de treino com desafios e objetivos'],
+  ['Sem feedback claro', 'Duetos e práticas enviados para avaliação'],
+]
+
+function VipUpsellTrigger({ compact = false }: { compact?: boolean }) {
   return (
     <div
       id="kiwify-upsell-HHr4eyM"
       data-upsell-url="https://promo.focoemcanto.com/mentoria-especial"
       data-downsell-url=""
-      style={{ textAlign: 'center' }}
+      className={compact ? 'kiwify-wrap compact' : 'kiwify-wrap'}
     >
-      <button
-        id="kiwify-upsell-trigger-HHr4eyM"
-        style={{ backgroundColor: '#2ECC70', padding: '12px 16px', cursor: 'pointer', color: '#FFFFFF', fontWeight: 600, borderRadius: 4, border: '1px solid #2ECC70', fontSize: 20, width: '100%', minHeight: 66, textTransform: 'uppercase' }}
-      >
-        Sim, eu aceito essa oferta especial!
+      <button id="kiwify-upsell-trigger-HHr4eyM" className="vip-primary-button">
+        Desbloquear meu Acesso VIP
       </button>
-      <div
-        id="kiwify-upsell-cancel-trigger-HHr4eyM"
-        style={{ marginTop: '1rem', cursor: 'pointer', fontSize: 16, textDecoration: 'underline', fontFamily: 'sans-serif', color: 'rgba(255,255,255,.68)' }}
-      >
-        Não, eu gostaria de recusar essa oferta
+      <div id="kiwify-upsell-cancel-trigger-HHr4eyM" className="vip-decline">
+        Não quero liberar os recursos VIP agora
       </div>
     </div>
   )
 }
 
 export const metadata = {
-  title: 'Obrigado — Membros VIP Foco em Harmonia',
-  description: 'Oferta exclusiva para entrar no grupo Membros VIP do Foco em Harmonia com suporte contínuo e materiais extras.',
+  title: 'Desbloqueie o Acesso VIP — Escola Foco em Canto',
+  description: 'Oferta exclusiva para liberar recursos premium da Escola Foco em Canto: exercícios diários, duetos, avaliação, comunidade, biblioteca e análise vocal.',
 }
 
 export default function ObrigadoVipPage() {
   return (
     <main className="vip-page">
       <style dangerouslySetInnerHTML={{ __html: `
-        .vip-page{min-height:100vh;background:#070707;color:#fff;font-family:Roboto,Arial,sans-serif;overflow-x:hidden}.vip-page *{box-sizing:border-box}.vip-container{width:min(1120px,100%);margin:0 auto;padding:0 24px}.vip-narrow{width:min(820px,100%);margin:0 auto;padding:0 24px}.vip-center{text-align:center}.vip-hero{position:relative;padding:54px 0 72px;background:radial-gradient(circle at 50% 0%,rgba(35,217,181,.18),transparent 34%),linear-gradient(180deg,#101010 0%,#070707 100%)}.vip-badge{display:inline-flex;align-items:center;justify-content:center;border:1px solid rgba(35,217,181,.5);background:rgba(35,217,181,.1);color:#23D9B5;border-radius:999px;padding:10px 18px;font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:22px}.vip-title{font-size:clamp(32px,6vw,64px);line-height:1.02;font-weight:900;letter-spacing:-.04em;margin:0 auto 18px;max-width:980px}.vip-title span{color:#23D9B5}.vip-lead{font-size:clamp(17px,2.3vw,22px);line-height:1.45;color:rgba(255,255,255,.82);max-width:820px;margin:0 auto 28px}.vip-alert{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:#ee6f70;color:#fff;border-radius:10px;padding:14px 18px;font-weight:800;margin:4px auto 26px;box-shadow:0 12px 30px rgba(238,111,112,.25)}.vip-hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:34px;align-items:center;margin-top:26px}.vip-card{background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.035));border:1px solid rgba(255,255,255,.14);border-radius:24px;padding:30px;box-shadow:0 24px 70px rgba(0,0,0,.35)}.vip-price-card{position:relative;text-align:center;border-color:rgba(35,217,181,.45);box-shadow:0 0 0 1px rgba(35,217,181,.08),0 28px 80px rgba(35,217,181,.14)}.vip-price-label{color:rgba(255,255,255,.72);font-size:18px;font-weight:700;margin-bottom:6px}.vip-price{display:flex;align-items:flex-end;justify-content:center;gap:8px;color:#23D9B5;margin:8px 0}.vip-price small{font-size:24px;font-weight:800;margin-bottom:9px}.vip-price strong{font-size:72px;line-height:.9;font-weight:900;letter-spacing:-.05em}.vip-price-note{color:#fff;font-size:18px;font-weight:800;margin:8px 0 16px}.vip-recurring{color:rgba(255,255,255,.68);font-size:14px;line-height:1.5;margin-bottom:22px}.vip-cta{display:inline-flex;align-items:center;justify-content:center;min-height:66px;width:100%;border-radius:9px;background:linear-gradient(232deg,#46B581,#21724C);color:#fff;font-size:16px;font-weight:900;text-transform:uppercase;padding:20px 28px;box-shadow:0 16px 42px rgba(35,217,181,.25);transition:transform .18s ease,filter .18s ease;text-decoration:none;border:0;cursor:pointer}.vip-cta:hover{transform:scale(1.025);filter:brightness(1.05)}.vip-small{font-size:12px;color:rgba(255,255,255,.55);line-height:1.5;margin-top:14px}.vip-list{display:grid;gap:14px;margin:0;padding:0;list-style:none}.vip-list li{display:flex;gap:12px;align-items:flex-start;color:rgba(255,255,255,.86);font-size:16px;line-height:1.55}.vip-check{flex:0 0 24px;width:24px;height:24px;border-radius:999px;background:#23D9B5;color:#06100d;display:grid;place-items:center;font-weight:900;margin-top:1px}.vip-section{padding:72px 0}.vip-section.gray{background:#101010}.vip-section-title{font-size:clamp(28px,4vw,44px);line-height:1.1;font-weight:900;letter-spacing:-.03em;margin:0 auto 18px;text-align:center;max-width:900px}.vip-section-title span{color:#23D9B5}.vip-section-sub{font-size:18px;line-height:1.55;color:rgba(255,255,255,.72);text-align:center;max-width:760px;margin:0 auto 42px}.vip-features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.vip-feature{background:#171717;border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:24px;min-height:180px}.vip-feature-icon{font-size:28px;margin-bottom:14px}.vip-feature h3{font-size:18px;margin:0 0 10px;color:#fff}.vip-feature p{font-size:15px;line-height:1.55;color:rgba(255,255,255,.68);margin:0}.vip-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.vip-step{position:relative;background:#fff;color:#111;border-radius:18px;padding:26px;min-height:190px}.vip-step-num{width:42px;height:42px;border-radius:999px;background:#23D9B5;color:#05100d;display:grid;place-items:center;font-weight:900;margin-bottom:18px}.vip-step h3{margin:0 0 10px;font-size:20px}.vip-step p{margin:0;color:#4b4b4b;line-height:1.55}.vip-offer{background:radial-gradient(circle at 50% 0%,rgba(35,217,181,.16),transparent 35%),#050505;padding:80px 0}.vip-offer-box{width:min(820px,100%);margin:0 auto;background:linear-gradient(180deg,rgba(255,255,255,.09),rgba(255,255,255,.04));border:1px solid rgba(35,217,181,.45);border-radius:26px;padding:34px;text-align:center;box-shadow:0 30px 90px rgba(0,0,0,.4)}.vip-offer-box h2{font-size:clamp(30px,5vw,54px);line-height:1.05;margin:0 0 18px}.vip-offer-box h2 span{color:#23D9B5}.vip-offer-box p{color:rgba(255,255,255,.75);font-size:18px;line-height:1.55;margin:0 auto 22px;max-width:650px}.vip-price-mini{display:inline-flex;align-items:center;gap:10px;background:rgba(35,217,181,.1);border:1px solid rgba(35,217,181,.35);border-radius:999px;padding:11px 16px;color:#23D9B5;font-weight:900;margin-bottom:22px}.vip-faq details{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:18px 20px;margin:12px 0}.vip-faq summary{cursor:pointer;font-weight:800}.vip-faq p{margin:12px 0 0;color:rgba(255,255,255,.68);line-height:1.6}.vip-no{display:inline-block;margin-top:18px;color:rgba(255,255,255,.5);font-size:14px;text-decoration:underline}.vip-floating{position:sticky;bottom:0;z-index:40;background:rgba(7,7,7,.86);backdrop-filter:blur(10px);border-top:1px solid rgba(255,255,255,.1);padding:12px 18px}.vip-floating-inner{width:min(920px,100%);margin:0 auto;display:flex;gap:14px;align-items:center;justify-content:space-between}.vip-floating strong{color:#23D9B5}.vip-floating button{max-width:340px}.vip-muted{color:rgba(255,255,255,.62)}@media(max-width:820px){.vip-hero{padding:38px 0 54px}.vip-hero-grid,.vip-features,.vip-steps{grid-template-columns:1fr}.vip-card{padding:22px}.vip-price strong{font-size:58px}.vip-floating-inner{display:block;text-align:center}.vip-floating button{margin-top:10px;min-height:54px;max-width:none}.vip-section{padding:54px 0}.vip-alert{font-size:13px;line-height:1.25}.vip-list li{font-size:15px}}
+        .vip-page{min-height:100vh;background:#050505;color:#fff;font-family:Inter,Roboto,Arial,sans-serif;overflow-x:hidden}.vip-page *{box-sizing:border-box}.vip-shell{width:min(1180px,100%);margin:0 auto;padding:0 22px}.vip-gold{color:#f5c85f}.vip-muted{color:rgba(255,255,255,.66)}.vip-hero{position:relative;padding:50px 0 70px;background:radial-gradient(circle at 18% 8%,rgba(245,200,95,.18),transparent 30%),radial-gradient(circle at 80% 0%,rgba(46,204,112,.12),transparent 28%),linear-gradient(180deg,#11100d 0%,#050505 72%)}.vip-hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(180deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:84px 84px;mask-image:linear-gradient(180deg,#000,transparent 70%);pointer-events:none}.vip-hero-grid{position:relative;display:grid;grid-template-columns:1fr .86fr;gap:38px;align-items:center}.vip-badge{display:inline-flex;align-items:center;gap:9px;border:1px solid rgba(245,200,95,.35);background:rgba(245,200,95,.08);color:#f5d47b;border-radius:999px;padding:10px 15px;font-size:12px;font-weight:900;letter-spacing:.11em;text-transform:uppercase;margin-bottom:22px}.vip-kicker{font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:#f5c85f;font-weight:900;margin:0 0 16px}.vip-title{font-size:clamp(42px,7vw,82px);line-height:.94;font-weight:950;letter-spacing:-.065em;margin:0 0 20px;max-width:760px}.vip-title span{background:linear-gradient(180deg,#ffe596,#d8a83b);-webkit-background-clip:text;color:transparent}.vip-lead{font-size:clamp(18px,2.4vw,24px);line-height:1.45;color:rgba(255,255,255,.78);max-width:720px;margin:0 0 26px}.vip-alert{display:inline-flex;align-items:center;gap:10px;background:rgba(238,111,112,.13);border:1px solid rgba(238,111,112,.35);color:#ffd7d7;border-radius:14px;padding:13px 15px;font-weight:850;margin:0 0 26px}.vip-hero-actions{display:grid;grid-template-columns:minmax(260px,390px);gap:12px}.kiwify-wrap{text-align:center}.kiwify-wrap.compact{width:min(380px,100%);margin:0 auto}.vip-primary-button{width:100%;min-height:68px;border:0;border-radius:17px;background:linear-gradient(135deg,#ffe28a 0%,#f2bd4a 45%,#c58a24 100%);color:#0b0905;font-size:15px;font-weight:950;text-transform:uppercase;letter-spacing:.02em;cursor:pointer;box-shadow:0 18px 55px rgba(245,200,95,.24),inset 0 1px 0 rgba(255,255,255,.55);transition:transform .18s ease,filter .18s ease}.vip-primary-button:hover{transform:translateY(-2px);filter:brightness(1.05)}.vip-decline{display:inline-block;margin-top:14px;color:rgba(255,255,255,.48);font-size:13px;text-decoration:underline;cursor:pointer}.vip-device-stage{position:relative;min-height:660px;display:grid;place-items:center}.vip-device-glow{position:absolute;width:72%;height:58%;border-radius:999px;background:radial-gradient(circle,rgba(245,200,95,.2),transparent 68%);filter:blur(12px)}.vip-phone{position:relative;width:min(390px,86vw);height:650px;border:1px solid rgba(255,255,255,.17);border-radius:42px;background:#0b0b0c;padding:10px;box-shadow:0 32px 110px rgba(0,0,0,.7),0 0 0 8px rgba(255,255,255,.025);overflow:hidden;transform:rotate(2deg)}.vip-phone img{width:100%;height:100%;object-fit:cover;object-position:top center;border-radius:32px;display:block}.vip-floating-card{position:absolute;left:0;bottom:34px;width:min(290px,48vw);background:rgba(16,16,16,.78);border:1px solid rgba(245,200,95,.28);backdrop-filter:blur(18px);border-radius:22px;padding:18px;box-shadow:0 20px 70px rgba(0,0,0,.45)}.vip-floating-card strong{display:block;font-size:28px;line-height:1;color:#f5c85f;margin-bottom:6px}.vip-floating-card span{color:rgba(255,255,255,.7);font-size:14px;line-height:1.35}.vip-strip{border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08);background:#0a0a0a;padding:18px 0}.vip-strip-inner{display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap}.vip-pill{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.045);color:rgba(255,255,255,.72);border-radius:999px;padding:10px 14px;font-size:13px;font-weight:800}.vip-section{padding:84px 0}.vip-section.gray{background:#0d0d0d}.vip-center{text-align:center}.vip-section-title{font-size:clamp(34px,5vw,64px);line-height:1;letter-spacing:-.055em;font-weight:950;margin:0 auto 18px;max-width:900px}.vip-section-sub{font-size:clamp(17px,2vw,21px);line-height:1.55;color:rgba(255,255,255,.68);max-width:790px;margin:0 auto 44px}.vip-unlocks{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.vip-unlock{position:relative;min-height:138px;border:1px solid rgba(255,255,255,.1);background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.025));border-radius:22px;padding:20px;overflow:hidden}.vip-unlock:after{content:"";position:absolute;right:-30px;top:-30px;width:90px;height:90px;border-radius:999px;background:rgba(245,200,95,.11);filter:blur(3px)}.vip-lock{width:38px;height:38px;border-radius:13px;background:rgba(245,200,95,.13);border:1px solid rgba(245,200,95,.28);display:grid;place-items:center;margin-bottom:18px}.vip-unlock h3{font-size:16px;line-height:1.25;margin:0;font-weight:900}.vip-showcase{display:grid;gap:28px}.vip-feature{display:grid;grid-template-columns:.86fr 1.14fr;gap:34px;align-items:center;border:1px solid rgba(255,255,255,.1);background:linear-gradient(180deg,rgba(255,255,255,.065),rgba(255,255,255,.025));border-radius:34px;padding:30px;overflow:hidden}.vip-feature:nth-child(even){grid-template-columns:1.14fr .86fr}.vip-feature:nth-child(even) .vip-copy{order:2}.vip-feature:nth-child(even) .vip-shot{order:1}.vip-copy{padding:18px}.vip-eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:#f5c85f;font-weight:950;margin-bottom:14px}.vip-feature h3{font-size:clamp(31px,4.6vw,58px);line-height:.98;letter-spacing:-.055em;margin:0 0 16px}.vip-feature p{font-size:18px;line-height:1.55;color:rgba(255,255,255,.68);margin:0;max-width:520px}.vip-shot{position:relative;min-height:620px;display:grid;place-items:center;background:radial-gradient(circle at 50% 20%,rgba(245,200,95,.14),transparent 48%),#050505;border:1px solid rgba(255,255,255,.08);border-radius:28px;overflow:hidden}.vip-shot img{width:min(390px,84%);height:560px;object-fit:cover;object-position:top center;border-radius:32px;box-shadow:0 25px 80px rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.12)}.vip-compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:stretch}.vip-compare-card{border:1px solid rgba(255,255,255,.1);border-radius:30px;padding:30px;background:rgba(255,255,255,.04)}.vip-compare-card.highlight{border-color:rgba(245,200,95,.35);background:linear-gradient(180deg,rgba(245,200,95,.1),rgba(255,255,255,.035))}.vip-compare-card h3{font-size:30px;margin:0 0 22px}.vip-compare-list{display:grid;gap:14px}.vip-compare-item{display:flex;gap:12px;align-items:flex-start;color:rgba(255,255,255,.76);font-size:16px;line-height:1.4}.vip-symbol{flex:0 0 26px;width:26px;height:26px;border-radius:999px;display:grid;place-items:center;font-weight:950}.vip-symbol.no{background:rgba(238,111,112,.14);color:#ff8b8b}.vip-symbol.yes{background:rgba(245,200,95,.15);color:#f5c85f}.vip-offer{position:relative;padding:90px 0 110px;background:radial-gradient(circle at 50% 0%,rgba(245,200,95,.18),transparent 35%),#050505}.vip-offer-box{width:min(920px,100%);margin:0 auto;text-align:center;border:1px solid rgba(245,200,95,.35);background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.032));border-radius:36px;padding:42px 28px;box-shadow:0 30px 110px rgba(0,0,0,.55)}.vip-offer-box h2{font-size:clamp(38px,6vw,72px);line-height:.96;letter-spacing:-.06em;margin:0 0 18px}.vip-offer-box p{font-size:19px;line-height:1.55;color:rgba(255,255,255,.7);max-width:720px;margin:0 auto 22px}.vip-price{display:flex;align-items:flex-end;justify-content:center;gap:9px;color:#f5c85f;margin:16px 0 8px}.vip-price small{font-size:26px;font-weight:950;margin-bottom:9px}.vip-price strong{font-size:78px;line-height:.9;font-weight:950;letter-spacing:-.065em}.vip-price-note{font-size:17px;color:rgba(255,255,255,.72);margin-bottom:28px}.vip-footer-sticky{position:sticky;bottom:0;z-index:50;background:rgba(5,5,5,.86);backdrop-filter:blur(16px);border-top:1px solid rgba(255,255,255,.1);padding:12px 18px}.vip-footer-inner{width:min(980px,100%);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:18px}.vip-footer-inner strong{color:#f5c85f}.vip-footer-inner .vip-primary-button{max-width:340px;min-height:56px;font-size:13px}.vip-footer-inner .vip-decline{display:none}@media(max-width:930px){.vip-hero{padding:38px 0 50px}.vip-hero-grid{grid-template-columns:1fr}.vip-device-stage{min-height:auto;margin-top:18px}.vip-phone{height:590px;transform:none}.vip-floating-card{left:14px;bottom:24px}.vip-unlocks{grid-template-columns:1fr 1fr}.vip-feature,.vip-feature:nth-child(even){grid-template-columns:1fr;padding:18px}.vip-feature:nth-child(even) .vip-copy,.vip-feature:nth-child(even) .vip-shot{order:unset}.vip-shot{min-height:560px}.vip-compare-grid{grid-template-columns:1fr}.vip-footer-inner{display:block;text-align:center}.vip-footer-inner .vip-primary-button{max-width:none;margin-top:10px}.vip-section{padding:62px 0}}@media(max-width:560px){.vip-shell{padding:0 18px}.vip-title{font-size:45px}.vip-lead{font-size:18px}.vip-alert{font-size:13px;line-height:1.3}.vip-phone{width:100%;height:560px;border-radius:34px}.vip-phone img{border-radius:25px}.vip-floating-card{width:230px;padding:14px}.vip-floating-card strong{font-size:24px}.vip-unlocks{grid-template-columns:1fr}.vip-section-title{font-size:38px}.vip-feature h3{font-size:36px}.vip-feature p{font-size:16px}.vip-shot{min-height:520px}.vip-shot img{height:495px;width:min(320px,90%)}.vip-price strong{font-size:64px}}
       ` }} />
 
-      <section className="vip-hero vip-center">
-        <div className="vip-container">
-          <span className="vip-badge">Compra confirmada • oferta única</span>
-          <h1 className="vip-title">Pare de estudar sozinho. Entre no <span>Grupo VIP</span> do Foco em Harmonia.</h1>
-          <p className="vip-lead">Você já garantiu o curso. Agora você tem uma única chance de receber suporte contínuo, correções e materiais extras para acelerar seus treinos de divisão vocal.</p>
-          <div className="vip-alert">⚠️ Primeiro mês por R$ 15,90 somente nesta página</div>
-
-          <div className="vip-hero-grid">
-            <div className="vip-card">
-              <ul className="vip-list">
-                {benefits.map((item) => (
-                  <li key={item}><span className="vip-check">✓</span><span>{item}</span></li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="vip-card vip-price-card">
-              <div className="vip-price-label">Primeiro mês por apenas</div>
-              <div className="vip-price"><small>R$</small><strong>15,90</strong></div>
-              <div className="vip-price-note">depois R$ 19,90/mês</div>
-              <p className="vip-recurring">Entre hoje, aproveite o primeiro mês com desconto e continue recebendo suporte, feedbacks e materiais exclusivos todos os meses.</p>
-              <VipUpsellTrigger />
-              <p className="vip-small">Ao sair desta página, você perde esta condição especial.</p>
-            </div>
+      <section className="vip-hero">
+        <div className="vip-shell vip-hero-grid">
+          <div>
+            <div className="vip-badge">🎉 compra confirmada • oferta única</div>
+            <p className="vip-kicker">Acesso VIP da Escola Foco em Canto</p>
+            <h1 className="vip-title">Seu curso é o começo. <span>O VIP desbloqueia a escola completa.</span></h1>
+            <p className="vip-lead">Você já garantiu o Foco em Harmonia. Agora libere os recursos premium da Escola Foco em Canto para treinar todos os dias, gravar duetos, publicar sua evolução e receber avaliação.</p>
+            <div className="vip-alert">⚠️ Primeiro mês por R$ 15,90 somente nesta página</div>
+            <div className="vip-hero-actions"><VipUpsellTrigger /></div>
           </div>
+
+          <div className="vip-device-stage" aria-hidden="true">
+            <div className="vip-device-glow" />
+            <div className="vip-phone"><img src="/images/escola/hero-dashboard.webp" alt="" /></div>
+            <div className="vip-floating-card"><strong>VIP</strong><span>Libera central, comunidade, duetos, análise vocal e muito mais.</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section className="vip-strip">
+        <div className="vip-shell vip-strip-inner">
+          <span className="vip-pill">Não é só um grupo</span>
+          <span className="vip-pill">É um nível premium da escola</span>
+          <span className="vip-pill">Recursos liberados por assinatura</span>
         </div>
       </section>
 
       <section className="vip-section gray">
-        <div className="vip-container">
-          <h2 className="vip-section-title">O curso te mostra o caminho. O VIP te ajuda a <span>permanecer evoluindo.</span></h2>
-          <p className="vip-section-sub">A maior dificuldade de quem estuda divisão vocal é saber se está fazendo certo. No grupo VIP, você pode enviar suas práticas, tirar dúvidas e receber orientação para corrigir o que trava sua evolução.</p>
-          <div className="vip-features">
-            <div className="vip-feature"><div className="vip-feature-icon">🎧</div><h3>Correções e feedbacks</h3><p>Envie seus áudios, vídeos e atividades do curso para receber direcionamento prático.</p></div>
-            <div className="vip-feature"><div className="vip-feature-icon">📁</div><h3>Pasta exclusiva no Drive</h3><p>Acesse materiais extras, exercícios de áudio e vídeos de treino para reforçar seus estudos.</p></div>
-            <div className="vip-feature"><div className="vip-feature-icon">💬</div><h3>Suporte contínuo</h3><p>Tire dúvidas no grupo e tenha acompanhamento para aplicar o conteúdo com mais segurança.</p></div>
-          </div>
-        </div>
-      </section>
-
-      <section className="vip-section">
-        <div className="vip-container">
-          <h2 className="vip-section-title">Como funciona o acesso</h2>
-          <p className="vip-section-sub">Você entra agora, recebe as orientações de acesso e já começa a usar o grupo como apoio para o curso.</p>
-          <div className="vip-steps">
-            {steps.map(([number, title, text]) => (
-              <div className="vip-step" key={number}>
-                <div className="vip-step-num">{number}</div>
-                <h3>{title}</h3>
-                <p>{text}</p>
+        <div className="vip-shell vip-center">
+          <h2 className="vip-section-title">O que você desbloqueia com o <span className="vip-gold">Acesso VIP?</span></h2>
+          <p className="vip-section-sub">O curso ensina. O Acesso VIP transforma a Escola Foco em Canto em seu ambiente diário de evolução vocal.</p>
+          <div className="vip-unlocks">
+            {unlocks.map((item) => (
+              <div className="vip-unlock" key={item}>
+                <div className="vip-lock">🔓</div>
+                <h3>{item}</h3>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="vip-offer">
-        <div className="vip-container">
-          <div className="vip-offer-box">
-            <div className="vip-price-mini">Oferta única: R$ 15,90 no primeiro mês</div>
-            <h2>Não deixe sua evolução depender só da sua força de vontade.</h2>
-            <p>Entre no Membros VIP e tenha um espaço para praticar, enviar atividades, receber correções e acessar materiais de treino que reforçam tudo o que você vai aprender no Foco em Harmonia.</p>
-            <KiwifyUpsellCta>Quero aproveitar o mês VIP por R$ 15,90</KiwifyUpsellCta>
-            <br />
-            <a className="vip-no" href={nextUpsellUrl}>Não quero suporte VIP agora</a>
+      <section className="vip-section">
+        <div className="vip-shell">
+          <div className="vip-center">
+            <h2 className="vip-section-title">Veja a experiência que fica liberada.</h2>
+            <p className="vip-section-sub">A assinatura VIP não vende apenas suporte. Ela libera ferramentas reais para estudo, prática, comunidade e acompanhamento.</p>
+          </div>
+          <div className="vip-showcase">
+            {features.map((feature) => (
+              <article className="vip-feature" key={feature.title}>
+                <div className="vip-copy">
+                  <div className="vip-eyebrow">{feature.eyebrow}</div>
+                  <h3>{feature.title}</h3>
+                  <p>{feature.text}</p>
+                </div>
+                <div className="vip-shot"><img src={feature.image} alt={feature.alt} /></div>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="vip-section vip-faq">
-        <div className="vip-narrow">
-          <h2 className="vip-section-title">Perguntas rápidas</h2>
-          <details><summary>Esse grupo substitui o curso?</summary><p>Não. O grupo VIP complementa o curso com suporte, feedbacks, correções e materiais extras para você aplicar melhor o conteúdo.</p></details>
-          <details><summary>O valor é mensal?</summary><p>Sim. Nesta página, você garante o primeiro mês por R$ 15,90. Depois, a assinatura segue por R$ 19,90/mês.</p></details>
-          <details><summary>Posso enviar minhas atividades?</summary><p>Sim. A proposta do grupo é justamente permitir que você envie conteúdos, atividades, áudios e vídeos para receber orientação.</p></details>
-          <details><summary>Vou receber materiais extras?</summary><p>Sim. Você recebe acesso a uma pasta no Google Drive com materiais exclusivos de treino, incluindo atividades em áudio e vídeo.</p></details>
+      <section className="vip-section gray">
+        <div className="vip-shell">
+          <div className="vip-center">
+            <h2 className="vip-section-title">Antes era só assistir. Agora é <span className="vip-gold">evoluir com rotina.</span></h2>
+            <p className="vip-section-sub">O VIP muda a percepção do aluno: de um curso isolado para uma escola viva, com prática, recursos e acompanhamento.</p>
+          </div>
+          <div className="vip-compare-grid">
+            <div className="vip-compare-card">
+              <h3>Sem o VIP</h3>
+              <div className="vip-compare-list">
+                {comparisons.map(([before]) => <div className="vip-compare-item" key={before}><span className="vip-symbol no">×</span><span>{before}</span></div>)}
+              </div>
+            </div>
+            <div className="vip-compare-card highlight">
+              <h3>Com o Acesso VIP</h3>
+              <div className="vip-compare-list">
+                {comparisons.map(([, after]) => <div className="vip-compare-item" key={after}><span className="vip-symbol yes">✓</span><span>{after}</span></div>)}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      <div className="vip-floating">
-        <div className="vip-floating-inner">
-          <div><strong>Oferta única:</strong> <span className="vip-muted">primeiro mês VIP por R$ 15,90</span></div>
-          <KiwifyUpsellCta>Entrar no VIP agora</KiwifyUpsellCta>
+      <section className="vip-offer">
+        <div className="vip-shell">
+          <div className="vip-offer-box">
+            <div className="vip-badge">condição exclusiva desta página</div>
+            <h2>Desbloqueie hoje o nível VIP da Escola.</h2>
+            <p>Libere a central de exercícios, comunidade, biblioteca premium, exercícios guiados, análise vocal, duetos para avaliação e todos os novos recursos premium que entrarem na escola.</p>
+            <div className="vip-price"><small>R$</small><strong>15,90</strong></div>
+            <div className="vip-price-note">primeiro mês • depois R$ 19,90/mês</div>
+            <VipUpsellTrigger compact />
+          </div>
+        </div>
+      </section>
+
+      <div className="vip-footer-sticky">
+        <div className="vip-footer-inner">
+          <div><strong>Primeiro mês por R$ 15,90</strong><br /><span className="vip-muted">Oferta única para compradores do Foco em Harmonia.</span></div>
+          <VipUpsellTrigger compact />
         </div>
       </div>
     </main>
