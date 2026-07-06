@@ -159,8 +159,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Script id="force-current-checkout-link" strategy="afterInteractive">
           {`
             (function(){
-              var path = window.location.pathname;
-              var shouldForceHarmoniaCheckout = path === '/' || path === '/b' || path === '/b/' || path === '/v1' || path === '/v1/' || path === '/v2' || path === '/v2/';
+              var path = window.location.pathname.replace(/\/$/, '') || '/';
+              var shouldForceHarmoniaCheckout = path === '/' || path === '/b' || path === '/v1' || path === '/v2' || path.indexOf('/v2/') === 0;
               if (!shouldForceHarmoniaCheckout) return;
 
               var checkout = 'https://pay.kiwify.com.br/7FrQZOt';
@@ -218,6 +218,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               }
               warmupCheckout();
               updateCheckoutLinks();
+              document.addEventListener('click', function(event){
+                var link = event.target && event.target.closest ? event.target.closest('a[href*="pay.kiwify.com.br"]') : null;
+                if (!link) return;
+                link.setAttribute('href', buildCheckoutUrl());
+              }, true);
               new MutationObserver(updateCheckoutLinks).observe(document.body, { childList: true, subtree: true });
             })();
           `}
