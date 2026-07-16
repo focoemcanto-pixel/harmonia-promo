@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 
 const VIDEO_ID = 'UkVOl612fOo'
 const OFFER_PATH = '/v2'
-const EBOOK_URL = '/downloads/o-segredo-da-divisao-vocal-marcos-cruz.pdf'
+const EBOOK_URL = 'https://pub-54f9da0ab661427383e57b706d6ef15b.r2.dev/O%20segredo%20da%20divisa%CC%83o%20Vocal%20-%20Marcos%20Cruz%20(3).pdf'
 const STORAGE_KEY = 'oportunidade_aula_desbloqueada'
 
 declare global {
@@ -176,7 +176,7 @@ export default function OportunidadePage() {
               <>
                 <div className="op-actions">
                   <a className="op-btn op-offer" href={offerUrl}>Quero aproveitar a oferta promocional</a>
-                  <a className="op-btn op-gift" href={EBOOK_URL} download="o-segredo-da-divisao-vocal-marcos-cruz.pdf">🎁 Baixar meu eBook gratuito</a>
+                  <a className="op-btn op-gift" href={EBOOK_URL} download="o-segredo-da-divisao-vocal-marcos-cruz.pdf" target="_blank" rel="noreferrer">🎁 Baixar meu eBook gratuito</a>
                 </div>
                 <p className="op-note">Conteúdo liberado! Você pode baixar o material e acessar a condição especial.</p>
               </>
