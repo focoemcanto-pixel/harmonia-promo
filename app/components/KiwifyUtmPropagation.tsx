@@ -98,8 +98,30 @@ function buildCurrentCheckoutUrl() {
   return appendTracking(currentCheckoutUrl, getTrackingParams(), true)
 }
 
+function updateStructuredOfferPrices() {
+  document.querySelectorAll<HTMLElement>('.v1-big-price').forEach((element) => {
+    if (element.textContent?.replace(/\s/g, '') !== 'R$67,90') {
+      element.innerHTML = 'R$67<span>,90</span>'
+    }
+  })
+
+  document.querySelectorAll<HTMLElement>('.v2-big').forEach((element) => {
+    if (element.textContent?.replace(/\s/g, '') !== 'R$67,90') {
+      element.innerHTML = 'R$67<span>,90</span>'
+    }
+  })
+
+  document.querySelectorAll<HTMLElement>('.v1-price-panel p strong, .v2-panel p strong').forEach((element) => {
+    if (element.textContent !== 'R$7,02') {
+      element.textContent = 'R$7,02'
+    }
+  })
+}
+
 function updateOfferPrices() {
   if (!isHarmoniaOfferPage()) return
+
+  updateStructuredOfferPrices()
 
   const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT)
   let node = walker.nextNode()
