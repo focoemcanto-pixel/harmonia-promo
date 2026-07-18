@@ -3,8 +3,18 @@
 import { useEffect } from 'react'
 
 const checkoutPrefixes = ['https://pay.kiwify.com.br']
+const currentCheckoutUrl = 'https://pay.kiwify.com.br/yIy3Xdl'
 const trackingStorageKey = 'harmonia_tracking_params'
 const utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content']
+
+const priceReplacements: Array<[string, string]> = [
+  ['R$ 5,99', 'R$ 7,02'],
+  ['R$\u00a05,99', 'R$\u00a07,02'],
+  ['R$57,90', 'R$67,90'],
+  ['R$ 57,90', 'R$ 67,90'],
+  ['57,90', '67,90'],
+  ['5,99', '7,02'],
+]
 
 function getCurrentParams() {
   return new URLSearchParams(window.location.search)
@@ -51,7 +61,7 @@ function isCheckoutUrl(url: string) {
 }
 
 function appendTracking(urlString: string, params: URLSearchParams, includeSck: boolean) {
-  if (!urlString || !params.toString()) return urlString
+  if (!urlString) return urlString
 
   try {
     const url = new URL(urlString, window.location.origin)
@@ -79,6 +89,33 @@ function setIfChanged(element: Element, attribute: string, value: string) {
   }
 }
 
+function isHarmoniaOfferPage() {
+  const path = window.location.pathname.replace(/\/$/, '') || '/'
+  return path === '/' || path === '/b' || path === '/v1' || path === '/v2' || path.startsWith('/v2/')
+}
+
+function updateOfferPrices() {
+  if (!isHarmoniaOfferPage()) return
+
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT)
+  let node = walker.nextNode()
+
+  while (node) {
+    const originalValue = node.nodeValue || ''
+    let nextValue = originalValue
+
+    priceReplacements.forEach(([oldValue, newValue]) => {
+      nextValue = nextValue.split(oldValue).join(newValue)
+    })
+
+    if (nextValue !== originalValue) {
+      node.nodeValue = nextValue
+    }
+
+    node = walker.nextNode()
+  }
+}
+
 export default function KiwifyUtmPropagation() {
   useEffect(() => {
     let scheduled = false
@@ -87,7 +124,6 @@ export default function KiwifyUtmPropagation() {
       scheduled = false
 
       const params = getTrackingParams()
-      if (!params.toString()) return
 
       document.querySelectorAll<HTMLAnchorElement>('a[href]').forEach((link) => {
         const includeSck = isCheckoutUrl(link.href)
@@ -95,7 +131,9 @@ export default function KiwifyUtmPropagation() {
 
         if (!shouldUpdate) return
 
-        const nextHref = appendTracking(link.href, params, includeSck)
+        const baseUrl = includeSck && isHarmoniaOfferPage() ? currentCheckoutUrl : link.href
+        const nextHref = appendTracking(baseUrl, params, includeSck)
+
         if (link.href !== nextHref) {
           link.href = nextHref
         }
@@ -114,6 +152,8 @@ export default function KiwifyUtmPropagation() {
 
         setIfChanged(element, 'data-downsell-url', appendTracking(url, params, false))
       })
+
+      updateOfferPrices()
     }
 
     function scheduleUpdate() {
@@ -125,7 +165,7 @@ export default function KiwifyUtmPropagation() {
     updateTrackingTargets()
 
     const observer = new MutationObserver(scheduleUpdate)
-    observer.observe(document.body, { childList: true, subtree: true })
+    observer.observe(document.body, { childList: true, subtree: true, characterData: true })
 
     return () => observer.disconnect()
   }, [])
