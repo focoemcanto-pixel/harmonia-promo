@@ -94,6 +94,10 @@ function isHarmoniaOfferPage() {
   return path === '/' || path === '/b' || path === '/v1' || path === '/v2' || path.startsWith('/v2/')
 }
 
+function buildCurrentCheckoutUrl() {
+  return appendTracking(currentCheckoutUrl, getTrackingParams(), true)
+}
+
 function updateOfferPrices() {
   if (!isHarmoniaOfferPage()) return
 
@@ -162,12 +166,28 @@ export default function KiwifyUtmPropagation() {
       window.requestAnimationFrame(updateTrackingTargets)
     }
 
+    function forceCurrentCheckoutOnClick(event: MouseEvent) {
+      if (!isHarmoniaOfferPage()) return
+
+      const target = event.target
+      if (!(target instanceof Element)) return
+
+      const link = target.closest<HTMLAnchorElement>('a[href*="pay.kiwify.com.br"]')
+      if (!link) return
+
+      link.href = buildCurrentCheckoutUrl()
+    }
+
     updateTrackingTargets()
 
     const observer = new MutationObserver(scheduleUpdate)
     observer.observe(document.body, { childList: true, subtree: true, characterData: true })
+    document.addEventListener('click', forceCurrentCheckoutOnClick, true)
 
-    return () => observer.disconnect()
+    return () => {
+      observer.disconnect()
+      document.removeEventListener('click', forceCurrentCheckoutOnClick, true)
+    }
   }, [])
 
   return null
