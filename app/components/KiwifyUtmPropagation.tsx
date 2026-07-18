@@ -89,8 +89,12 @@ function setIfChanged(element: Element, attribute: string, value: string) {
   }
 }
 
+function currentPath() {
+  return window.location.pathname.replace(/\/$/, '') || '/'
+}
+
 function isHarmoniaOfferPage() {
-  const path = window.location.pathname.replace(/\/$/, '') || '/'
+  const path = currentPath()
   return path === '/' || path === '/b' || path === '/v1' || path === '/v2' || path.startsWith('/v2/')
 }
 
@@ -116,6 +120,21 @@ function updateStructuredOfferPrices() {
       element.textContent = 'R$7,02'
     }
   })
+}
+
+function applyV1PriceSpacing() {
+  if (currentPath() !== '/v1') return
+
+  const mainPrice = document.querySelector<HTMLElement>('.v1-price-panel .v1-big-price')
+  const installment = document.querySelector<HTMLElement>('.v1-price-panel .v1-big-price + p')
+
+  if (mainPrice) mainPrice.style.marginBottom = '8px'
+
+  if (installment) {
+    installment.style.marginTop = '0'
+    installment.style.marginBottom = '12px'
+    installment.style.lineHeight = '1.3'
+  }
 }
 
 function updateOfferPrices() {
@@ -180,6 +199,7 @@ export default function KiwifyUtmPropagation() {
       })
 
       updateOfferPrices()
+      applyV1PriceSpacing()
     }
 
     function scheduleUpdate() {
