@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 
 const CHECKOUT_DELAY_MS = 800
 const checkoutHosts = ['pay.kiwify.com.br']
+const WHATSAPP_URL = 'https://wa.me/5571996950264'
 
 function isCheckoutHref(href: string | null) {
   if (!href) return false
@@ -21,6 +22,12 @@ export default function CheckoutLoadingFallback() {
   const timerRef = useRef<number | null>(null)
 
   useEffect(() => {
+    function updateWhatsappLinks() {
+      document.querySelectorAll<HTMLAnchorElement>('a[href*="wa.me/"]').forEach((link) => {
+        link.href = WHATSAPP_URL
+      })
+    }
+
     function clearPending() {
       if (timerRef.current) {
         window.clearTimeout(timerRef.current)
@@ -41,7 +48,13 @@ export default function CheckoutLoadingFallback() {
       const target = event.target as HTMLElement | null
       const link = target?.closest?.('a[href]') as HTMLAnchorElement | null
 
-      if (!link || !isCheckoutHref(link.getAttribute('href'))) return
+      if (!link) return
+
+      if (link.href.includes('wa.me/')) {
+        link.href = WHATSAPP_URL
+      }
+
+      if (!isCheckoutHref(link.getAttribute('href'))) return
 
       scheduleFallback()
     }
@@ -50,11 +63,17 @@ export default function CheckoutLoadingFallback() {
       clearPending()
     }
 
+    updateWhatsappLinks()
+
+    const observer = new MutationObserver(updateWhatsappLinks)
+    observer.observe(document.body, { childList: true, subtree: true })
+
     document.addEventListener('click', handleClick, true)
     window.addEventListener('pagehide', handlePageHide)
     window.addEventListener('beforeunload', handlePageHide)
 
     return () => {
+      observer.disconnect()
       document.removeEventListener('click', handleClick, true)
       window.removeEventListener('pagehide', handlePageHide)
       window.removeEventListener('beforeunload', handlePageHide)
