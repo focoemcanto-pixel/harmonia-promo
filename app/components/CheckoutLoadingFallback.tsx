@@ -5,7 +5,7 @@ import SmartSalesAssistant from './SmartSalesAssistant'
 
 const CHECKOUT_DELAY_MS = 800
 const checkoutHosts = ['pay.kiwify.com.br']
-const WHATSAPP_URL = 'https://wa.me/5571996950264'
+const WHATSAPP_URL = 'https://wa.me/5571993392294'
 
 function isCheckoutHref(href: string | null) {
   if (!href) return false
